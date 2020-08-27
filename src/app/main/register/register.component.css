@@ -1,0 +1,30 @@
+.form-container {
+    height: 100%;
+    overflow: hidden;
+}
+
+.form-item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.card {
+    min-width: 400px;
+    background: repeating-linear-gradient(
+        20deg,
+        #ffffff,
+        #ffffff 2px,
+        #F5F5F5 3px,
+        #F5F5F5 4px
+    );
+}
+
+mat-form-field {
+    margin-bottom: 15px;
+}
+
+button {
+    background: #fc0254;
+    color: white;
+}
