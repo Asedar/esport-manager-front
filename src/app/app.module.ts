@@ -15,12 +15,14 @@ import { LoginComponent } from './main/login/login.component';
 import { RegisterComponent } from './main/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NotFoundComponent } from './main/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
