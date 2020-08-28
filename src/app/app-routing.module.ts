@@ -1,4 +1,4 @@
-import { LandingPageComponent } from './main/landing-page/landing-page.component';
+import { LandingPageComponent } from './modules/starting-page/landing-page/landing-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 

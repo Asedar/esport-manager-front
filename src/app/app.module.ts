@@ -1,41 +1,24 @@
-import { LandingPageModule } from './main/landing-page/landing-page.module';
+import { ErrorPagesModule } from './modules/error-pages/error-pages.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MatCardModule} from '@angular/material/card';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
-
-import { LoginComponent } from './main/login/login.component';
-import { RegisterComponent } from './main/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
-import { NotFoundComponent } from './main/not-found/not-found.component';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { StartingPageModule } from './modules/starting-page/starting-page.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    NotFoundComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LandingPageModule,
+    DashboardModule,
+    StartingPageModule,
     BrowserAnimationsModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatButtonModule,
-    MatInputModule,
-    MatIconModule,
-    MatFormFieldModule,
-    ReactiveFormsModule
+    ErrorPagesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

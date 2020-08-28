@@ -1,0 +1,57 @@
+.navbar {
+	padding-left: 72px;
+	padding-right: 72px;
+	background: #08192d;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: sticky;
+}
+
+.navbar-item {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.item-left {
+    margin-right: auto;
+    margin-left: 0px;
+}
+
+.item-right {
+    margin-left: 100px;
+    margin-right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    
+}
+
+.user-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 40px;
+}
+
+.logout {
+    color: #fc0254;
+}
+
+a {
+    color: white;
+}
+
+.account {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+}
+
+mat-icon {
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+}

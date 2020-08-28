@@ -9,6 +9,12 @@
                     </mat-card-title>
                 
                     <mat-card-content class="d-flex flex-column fields">
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Nick</mat-label>
+                            <input matInput placeholder="Nick" [formControl]="form.controls['nick']" required>
+                            <mat-error *ngIf="form.controls['nick'].invalid">You must enter a value</mat-error>
+                        </mat-form-field>
                 
                         <mat-form-field appearance="fill">
                             <mat-label>Name</mat-label>
