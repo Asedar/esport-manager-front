@@ -60,7 +60,7 @@ mat-icon {
     height: 40px;
 }
 
-.active-link, .link-item:hover {
+.active-link, .link-item:hover , .account:hover + .link-item{
     margin-bottom: -4px;
     border-bottom: 4px solid;
     border-color: #fc0254;
