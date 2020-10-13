@@ -42,6 +42,7 @@
 
 .logout {
     color: #fc0254;
+    cursor: pointer;
 }
 
 a {
