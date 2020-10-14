@@ -1,6 +1,6 @@
 <div class="form-container">
     <app-landing-navbar></app-landing-navbar>
-    <div class=form-item>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form" class=form-item>
         <div class="container">
             <div class="row justify-content-center">
                 <mat-card class= "card">
@@ -12,7 +12,10 @@
 
                         <mat-form-field appearance="fill">
                             <mat-label>Nick</mat-label>
-                            <input matInput placeholder="Nick" [formControl]="form.controls['nick']" required>
+                            <input matInput placeholder="Nick" [formControl]="form.controls['nick']" (ngModelChange)="checkNickAvailibility()" required>
+                            <div *ngIf="form.controls['nick'].valid" mat-icon matSuffix>
+                                <mat-icon>{{isNickAvailable ? 'done' : 'error'}}</mat-icon>
+                            </div>
                             <mat-error *ngIf="form.controls['nick'].invalid">You must enter a value</mat-error>
                         </mat-form-field>
                 
@@ -30,7 +33,10 @@
 
                         <mat-form-field appearance="fill">
                             <mat-label>E-mail</mat-label>
-                            <input matInput placeholder="E-mail" [formControl]="form.controls['email']" required>
+                            <input matInput placeholder="E-mail" [formControl]="form.controls['email']" (ngModelChange)="checkEmailAvailibility()" required>
+                            <div *ngIf="form.controls['email'].valid" mat-icon matSuffix>
+                                <mat-icon>{{isEmailAvailable ? 'done' : 'error'}}</mat-icon>
+                            </div>
                             <mat-error *ngIf="form.controls['email'].invalid">{{getEmailErrorMessage()}}</mat-error>
                         </mat-form-field>
                 
@@ -49,6 +55,6 @@
                 </mat-card>
             </div>
         </div>     
-    </div>
+    </form>
     
 </div>

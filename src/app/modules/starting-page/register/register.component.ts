@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import * as _ from 'lodash';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -18,6 +20,12 @@ export class RegisterComponent implements OnInit {
   })
   
   hide = true;
+  isEmailAvailable = true;
+  isNickAvailable = true;
+
+  checkEmailAvailibility = _.debounce(this.getEmailAvailibilityFromAPI, 1500);
+  checkNickAvailibility = _.debounce(this.getNickAvailibilityFromAPI, 1500);
+
 
   getEmailErrorMessage() {
     if (this.form.controls['email'].hasError('required')) {
@@ -39,8 +47,39 @@ export class RegisterComponent implements OnInit {
     }
     return '';
   }
+  
+  getEmailAvailibilityFromAPI() {
+    console.log('dupaAPI')
+    this.authService.getConfig().subscribe(config => {
+      this.authService.checkEmailAvailability(config.apiURL, this.form.get('email').value)
+        .subscribe(
+          response => {
+            this.isEmailAvailable = true;
+          },
+          error => {
+            this.isEmailAvailable = false;
+          })
+    })
+  }
 
-  constructor() { }
+  getNickAvailibilityFromAPI() {
+    this.authService.getConfig().subscribe(config => {
+      this.authService.checkNickAvailability(config.apiURL, this.form.get('nick').value)
+        .subscribe(
+          response => {
+            this.isNickAvailable = true;
+          },
+          error => {
+            this.isNickAvailable = false;
+          })
+    })
+  }
+
+  onSubmit() {
+    console.log(this.form);
+  }
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }

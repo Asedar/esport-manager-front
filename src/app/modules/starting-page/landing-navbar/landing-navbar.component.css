@@ -1,48 +1,68 @@
-.header-section {
+.navbar {
 	padding-left: 72px;
 	padding-right: 72px;
 	background: #08192d;
-	height: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: sticky;
 }
 
-.site-logo {
-	display: inline-block;
-	padding: 0;
-	padding: 25px 15px;
-	background-image: url(/assets/img/mike.jpg);
+.navbar-item {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.item-left {
+    margin-right: auto;
+    margin-left: 0px;
+    background-image: url(/assets/img/mike.jpg);
     background-size: cover;
     width: 50px;
     height: 50px;
 }
 
-.header-right {
-	float: right;
-	padding: 25px 0;
-	margin-left: 130px;
+.item-right {
+    margin-left: 100px;
+    margin-right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    
 }
 
-.header-right .hr-btn {
-	display: inline-block;
-	color: #979aa5;
+.user-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 40px;
 }
 
-.header-right .user-panel {
-	display: inline-block;
+.colored {
+    color: #fc0254;
 }
 
-.header-right .user-panel a {
-	font-size: 16px;
-	color: #ffffff;
-	margin: 0 10px;
+a {
+    color: white;
 }
 
-.header-right .user-panel .register {
-	color: #fc0254;
-	margin-right: 0;
+.account {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
 }
 
-.header-right span {
-	color: #fff;
-	display: inline-block;
-	padding-left: 9px;
+mat-icon {
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+}
+
+.active-link, .link-item:hover , .account:hover + .link-item{
+    margin-bottom: -4px;
+    border-bottom: 4px solid;
+    border-color: #fc0254;
+    box-sizing: border-box;
 }
