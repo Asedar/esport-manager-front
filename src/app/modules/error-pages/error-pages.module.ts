@@ -1,3 +1,4 @@
+import { DashboardModule } from './../dashboard/dashboard.module';
 import { StartingPageModule } from './../starting-page/starting-page.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,7 +12,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
   imports: [
     CommonModule,
     ErrorPagesRoutingModule,
-    StartingPageModule
+    StartingPageModule,
+    DashboardModule
   ]
 })
 export class ErrorPagesModule { }

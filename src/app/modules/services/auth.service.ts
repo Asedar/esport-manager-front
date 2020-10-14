@@ -45,20 +45,6 @@ export class AuthService {
     return this.http.post(URL + 'users', body);
   }
 
-  public checkNickAvailability(URL: string, nick: string) {
-    const body = {
-      "nick": nick
-    }
-    return this.http.post(URL + 'users/nick', body);
-  }
-
-  public checkEmailAvailability(URL: string, email: string) {
-    const body = {
-      "email": email
-    }
-    return this.http.post(URL + 'users/email', body);
-  }
-
   public logout() {
     this.storageService.logout();
     this.router.navigate(['/home']);

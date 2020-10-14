@@ -1,5 +1,6 @@
 <div class="main-container">
-    <app-landing-navbar></app-landing-navbar>
+    <app-landing-navbar *ngIf="!isLogedIn()"></app-landing-navbar>
+    <app-navbar *ngIf="isLogedIn()"></app-navbar>
     <div class="item">
        <h1><strong>404</strong></h1>
        <h2>Looks like you're lost :(</h2>
