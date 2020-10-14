@@ -1,6 +1,8 @@
+import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import * as _ from 'lodash';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from '../../services/auth.service';
 
 
@@ -11,6 +13,11 @@ import { AuthService } from '../../services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
+  constructor(
+    private authService: AuthService,
+    private spinner: NgxSpinnerService) { 
+  }
+
   form = new FormGroup({
     nick: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
@@ -20,12 +27,9 @@ export class RegisterComponent implements OnInit {
   })
   
   hide = true;
-  isEmailAvailable = true;
-  isNickAvailable = true;
-
-  checkEmailAvailibility = _.debounce(this.getEmailAvailibilityFromAPI, 1500);
-  checkNickAvailibility = _.debounce(this.getNickAvailibilityFromAPI, 1500);
-
+  registerError = false;
+  registerSuccess = false;
+  errorMessages = [];
 
   getEmailErrorMessage() {
     if (this.form.controls['email'].hasError('required')) {
@@ -48,38 +52,52 @@ export class RegisterComponent implements OnInit {
     return '';
   }
   
-  getEmailAvailibilityFromAPI() {
-    console.log('dupaAPI')
-    this.authService.getConfig().subscribe(config => {
-      this.authService.checkEmailAvailability(config.apiURL, this.form.get('email').value)
-        .subscribe(
-          response => {
-            this.isEmailAvailable = true;
-          },
-          error => {
-            this.isEmailAvailable = false;
-          })
-    })
-  }
-
-  getNickAvailibilityFromAPI() {
-    this.authService.getConfig().subscribe(config => {
-      this.authService.checkNickAvailability(config.apiURL, this.form.get('nick').value)
-        .subscribe(
-          response => {
-            this.isNickAvailable = true;
-          },
-          error => {
-            this.isNickAvailable = false;
-          })
-    })
-  }
-
   onSubmit() {
-    console.log(this.form);
+    if(this.form.valid) {
+      this.spinner.show();
+      this.authService.getConfig().subscribe(config => {
+        this.authService.register(this.form, config.apiURL)
+          .subscribe(
+            response => {
+              this.registerError = false;
+              this.registerSuccess = true;
+              this.spinner.hide();
+            },
+            error => {
+              this.registerError = true;
+              this.registerSuccess = false;
+              this.getRegisterErrorMessage(error.error);
+              this.spinner.hide();
+            })
+      })
+    }
   }
 
-  constructor(private authService: AuthService) { }
+  getRegisterErrorMessage(error) {
+    this.errorMessages = [];
+    error.errors.forEach(element => {
+      switch(element.param) {
+        case 'email': {
+          if(element.message == 'EMAIL_TAKEN') {
+            this.errorMessages.push('This e-mail is already in use');
+          }
+          if(element.message == 'email') {
+            this.errorMessages.push('Invalid e-mail format');
+          }
+          break;
+        }
+        case 'nick': {
+          if(element.message == 'NICK_TAKEN') {
+            this.errorMessages.push('This nick is already in use');
+          }
+          break;
+        }
+        default: {
+          this.errorMessages.push('Something went wrong, please try again later')
+        }
+      }
+    });
+  }
 
   ngOnInit(): void {
   }

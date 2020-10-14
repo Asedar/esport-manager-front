@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
       this.errorMessage = 'Incorrect password';
     }
     else {
-      this.errorMessage = '';
+      this.errorMessage = 'Something went wrong, please try again later';
     }
   }
 

@@ -20,7 +20,6 @@ export class AuthService {
   private jwtHelper = new JwtHelperService();
 
   public login(form: FormGroup, URL: string): Observable<any> {
-    console.log(form)
     const body = {
       "email": form.get('email').value,
       "password": form.get('password').value
@@ -34,8 +33,16 @@ export class AuthService {
       ));
   }
 
-  public register() {
-    
+  public register(form: FormGroup, URL: string) {
+    const body = {
+      "email": form.get('email').value,
+      "password": form.get('password').value,
+      "name": form.get('name').value,
+      "surname": form.get('surname').value,
+      "nick": form.get('nick').value,
+    }
+
+    return this.http.post(URL + 'users', body);
   }
 
   public checkNickAvailability(URL: string, nick: string) {

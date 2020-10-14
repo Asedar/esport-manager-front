@@ -12,10 +12,7 @@
 
                         <mat-form-field appearance="fill">
                             <mat-label>Nick</mat-label>
-                            <input matInput placeholder="Nick" [formControl]="form.controls['nick']" (ngModelChange)="checkNickAvailibility()" required>
-                            <div *ngIf="form.controls['nick'].valid" mat-icon matSuffix>
-                                <mat-icon>{{isNickAvailable ? 'done' : 'error'}}</mat-icon>
-                            </div>
+                            <input matInput placeholder="Nick" [formControl]="form.controls['nick']" required>
                             <mat-error *ngIf="form.controls['nick'].invalid">You must enter a value</mat-error>
                         </mat-form-field>
                 
@@ -33,10 +30,7 @@
 
                         <mat-form-field appearance="fill">
                             <mat-label>E-mail</mat-label>
-                            <input matInput placeholder="E-mail" [formControl]="form.controls['email']" (ngModelChange)="checkEmailAvailibility()" required>
-                            <div *ngIf="form.controls['email'].valid" mat-icon matSuffix>
-                                <mat-icon>{{isEmailAvailable ? 'done' : 'error'}}</mat-icon>
-                            </div>
+                            <input matInput placeholder="E-mail" [formControl]="form.controls['email']" required>
                             <mat-error *ngIf="form.controls['email'].invalid">{{getEmailErrorMessage()}}</mat-error>
                         </mat-form-field>
                 
@@ -48,6 +42,15 @@
                             </button>
                             <mat-error *ngIf="form.controls['password'].invalid">{{getPasswordErrorMessage()}}</mat-error>
                         </mat-form-field>
+
+                        <div class="register-message register-error" *ngIf="registerError">
+                            <div *ngFor="let message of errorMessages">
+                                {{message}}
+                            </div>
+                        </div>
+                        <div class="register-message register-success" *ngIf="registerSuccess">
+                            Success! You can now log in.
+                        </div>
                                 
                         <button mat-raised-button>Register</button>
                         
@@ -58,3 +61,4 @@
     </form>
     
 </div>
+<ngx-spinner></ngx-spinner>
