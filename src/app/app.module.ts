@@ -10,6 +10,8 @@ import { StartingPageModule } from './modules/starting-page/starting-page.module
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AuthInterceptor } from './modules/interceptors/auth.interceptor';
+import { NavbarModule } from './modules/navbar/navbar.module';
+import { RandomizerModule } from './modules/randomizer/randomizer.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { AuthInterceptor } from './modules/interceptors/auth.interceptor';
     AppRoutingModule,
     DashboardModule,
     StartingPageModule,
+    NavbarModule,
+    RandomizerModule,
     BrowserAnimationsModule,
     ErrorPagesModule,
     HttpClientModule,

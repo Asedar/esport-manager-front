@@ -1,0 +1,22 @@
+.main-container {
+    font-size: 14px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.nick {
+    width: 100%;
+}
+
+.position {
+    font-size: 12px;
+    width: 100%;
+}
+
+.radio-group > *{
+    margin-right: 10px;
+}
+
+.position-select {
+    width: 100px;
+}

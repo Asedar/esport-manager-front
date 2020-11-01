@@ -1,7 +1,7 @@
-import { LandingPageComponent } from './modules/starting-page/landing-page/landing-page.component';
+import { LandingPageComponent } from './modules/starting-page/components/landing-page/landing-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoggedGuard } from './modules/guards/logged.guard';
+import { LoggedGuard } from './guards/logged.guard';
 
 
 const routes: Routes = [

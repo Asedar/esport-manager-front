@@ -1,11 +1,11 @@
-import { LandingPageComponent } from './landing-page/landing-page.component';
-import { RegisterComponent } from './register/register.component';
-import { LandingNavbarComponent } from './../starting-page/landing-navbar/landing-navbar.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LandingNavbarComponent } from './../starting-page/components/landing-navbar/landing-navbar.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { StartingPageRoutingModule } from './starting-page-routing.module';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './components/login/login.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';

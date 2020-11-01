@@ -3,6 +3,7 @@ html, body {
     font-family: 'Roboto', sans-serif;
     background: #0a183d;
 	min-width: 550px;
+	font-size: 1.1rem;
 }
 
 a:hover,
@@ -32,3 +33,6 @@ a:focus, button:focus {
     color: #fff;
 }
 
+.colored {
+    color: #fc0254;
+}

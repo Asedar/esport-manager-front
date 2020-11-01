@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 
 import { ErrorPagesRoutingModule } from './error-pages-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { NavbarModule } from '../navbar/navbar.module';
 
 
 @NgModule({
@@ -13,7 +14,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     CommonModule,
     ErrorPagesRoutingModule,
     StartingPageModule,
-    DashboardModule
+    NavbarModule
   ]
 })
 export class ErrorPagesModule { }

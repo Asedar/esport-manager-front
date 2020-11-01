@@ -1,0 +1,10 @@
+<app-navbar></app-navbar>
+<div class="randomizer-container">
+    <div class="options" (click)="openDialog()"></div>
+    <div class="input-container">
+        <div *ngFor="let player of players">
+            <app-randomizer-input [gameType]="gameType"></app-randomizer-input>
+        </div>   
+    </div>
+</div>
+
