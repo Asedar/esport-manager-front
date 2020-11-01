@@ -1,10 +1,13 @@
-<app-navbar></app-navbar>
 <div class="randomizer-container">
+    <app-navbar></app-navbar>
     <div class="options" (click)="openDialog()"></div>
-    <div class="input-container">
-        <div *ngFor="let player of players">
-            <app-randomizer-input [gameType]="gameType"></app-randomizer-input>
-        </div>   
-    </div>
+    <form class="input-box" (ngSubmit)="randomize()" [formGroup]="playerInputs">
+        <div class="input-container">
+            <div *ngFor="let player of players; let i = index">
+                <app-randomizer-input [gameType]="gameType" [formGroup]="playerInputs.get('player' + i)"></app-randomizer-input>
+            </div>   
+        </div>
+        <button mat-raised-button>Randomize</button>
+    </form> 
 </div>
 

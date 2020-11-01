@@ -1,17 +1,17 @@
 <div class="main-container">
     <mat-form-field class="nick" appearance="outline">
         <mat-label>Player</mat-label>
-        <input matInput placeholder="Nick" required>
-        <mat-error *ngIf="">Required</mat-error>
+        <input matInput placeholder="Nick" required [formControl]="formGroup.get('input')">
+        <mat-error *ngIf="formGroup.get('input').invalid">Required</mat-error>
     </mat-form-field>
     <div class="position" *ngIf="gameType == 'MOBA'">
-        <mat-radio-group class="radio-group">
-            <mat-radio-button value="1" checked>Random</mat-radio-button>
+        <mat-radio-group class="radio-group" [formControl]="formGroup.get('randomizeType')">
+            <mat-radio-button value="1">Random</mat-radio-button>
             <mat-radio-button value="2">Avoid position</mat-radio-button>
             <mat-radio-button value="3">Force position</mat-radio-button>
         </mat-radio-group>
         <mat-form-field appearance="outline" class="position-select">
-            <mat-select [(value)]="options[0].value">
+            <mat-select [(value)]="options[0].value" [formControl]="formGroup.get('position')">
               <mat-option *ngFor="let option of options" [value]="option.value">
                 {{option.viewValue}}
               </mat-option>

@@ -9,7 +9,7 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { StartingPageModule } from './modules/starting-page/starting-page.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { AuthInterceptor } from './modules/interceptors/auth.interceptor';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { NavbarModule } from './modules/navbar/navbar.module';
 import { RandomizerModule } from './modules/randomizer/randomizer.module';
 

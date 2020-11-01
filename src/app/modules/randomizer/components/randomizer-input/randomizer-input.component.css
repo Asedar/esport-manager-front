@@ -20,3 +20,9 @@
 .position-select {
     width: 100px;
 }
+
+
+:host ::ng-deep .mat-form-field-wrapper{
+    margin: 0 !important;
+    padding: 1px;
+  }

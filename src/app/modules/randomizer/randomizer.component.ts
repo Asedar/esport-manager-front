@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { RandomizerDialogComponent } from './components/randomizer-dialog/randomizer-dialog.component';
 import { Player } from './models/player.model';
@@ -25,11 +25,23 @@ export class RandomizerComponent implements OnInit {
       if(result) {
         this.gameType = result.gameType;
         this.players = [];
+        let playerFormTemplate = {};
         for(let i = 0; i < result.numberOfPlayers * 2; i++) {
           this.players.push(new Player());
+          let playerControlTemplate = {input: new FormControl('', Validators.required)};
+          if(this.gameType === 'MOBA') {
+            playerControlTemplate['position'] = new FormControl('top', Validators.required);
+            playerControlTemplate['randomizeType'] = new FormControl('1', Validators.required);
+          }
+          playerFormTemplate['player' + i] = new FormGroup(playerControlTemplate);
         }
+        this.playerInputs = new FormGroup(playerFormTemplate);
       }
     });
+  }
+
+  randomize() {
+    console.log(this.playerInputs);
   }
 
   ngOnInit(): void {

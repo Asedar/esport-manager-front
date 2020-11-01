@@ -1,10 +1,15 @@
 .randomizer-container {
-    width: 100%;
     height: 100%;
+    overflow: hidden;
+}
+
+.input-box {
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    padding-bottom: 70px;
 }
 
 .input-container {
@@ -15,12 +20,16 @@
     width: 1050px;
     min-width: 500px;
     height: auto;
-    background-color: white;
+    
 }
 
 .input-container >* {
+    margin: 6px;
     width: 500px;
-    margin: 10px;
+    padding: 10px;
+    background-color: white;
+    border: 4px solid  #fc0254;
+    border-radius: 5px;
 }
 
 .options {
@@ -28,4 +37,7 @@
     background-size: cover;
     width: 60px;
     height: 60px;
+    position: absolute;
+    right: 30px;
+    top: 100px;
 }

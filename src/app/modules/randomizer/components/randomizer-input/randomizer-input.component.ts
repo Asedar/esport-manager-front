@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-randomizer-input',
@@ -10,6 +11,7 @@ export class RandomizerInputComponent implements OnInit {
   constructor() { }
 
   @Input() gameType: string;
+  @Input() formGroup: FormGroup;
 
   ngOnInit(): void {
   }
