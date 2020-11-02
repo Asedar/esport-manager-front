@@ -2,5 +2,7 @@ export class Player{
 
     nick: string;
     position?: string;
-    randomizeType?: string;
+    randomizeType: number;
+    assignedPosition: string;
+    previousPosition?: string;
 }

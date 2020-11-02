@@ -17,11 +17,11 @@ export class RandomizerInputComponent implements OnInit {
   }
 
   options = [
-    {value: 'top', viewValue: 'Top'},
-    {value: 'mid', viewValue: 'Mid'},
-    {value: 'jungle', viewValue: 'Jungle'},
-    {value: 'bottom', viewValue: 'Bottom'},
-    {value: 'support', viewValue: 'Support'}
+    {value: 'Top', viewValue: 'Top'},
+    {value: 'Mid', viewValue: 'Mid'},
+    {value: 'Jungle', viewValue: 'Jungle'},
+    {value: 'Bottom', viewValue: 'Bottom'},
+    {value: 'Support', viewValue: 'Support'}
   ];
 
 }

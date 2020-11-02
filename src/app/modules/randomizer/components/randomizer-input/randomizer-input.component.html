@@ -1,6 +1,6 @@
 <div class="main-container" [ngClass]="{'bigger' : gameType != 'MOBA'}">
     <mat-form-field class="nick"  appearance="outline">
-        <mat-label>Player</mat-label>
+        <mat-label>Nick</mat-label>
         <input matInput placeholder="Nick" required [formControl]="formGroup.get('input')">
         <mat-error *ngIf="formGroup.get('input').invalid">Required</mat-error>
     </mat-form-field>

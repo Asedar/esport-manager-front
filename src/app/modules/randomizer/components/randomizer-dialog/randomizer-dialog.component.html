@@ -2,7 +2,7 @@
 
   <div class="header">
     <h1 class="colored">Options</h1>
-    <button (click)="exit()"></button>
+    <div class="close" (click)="exit()"></div>
   </div>
   
   <div mat-dialog-content>
@@ -12,8 +12,8 @@
       <mat-radio-button value="OTHER">Other</mat-radio-button>
     </mat-radio-group>
 
-    <label id="number-picker-label">Number of players in team:</label>
-    <div class="dialog-picker">
+    <label id="number-picker-label" [ngClass]="{'disabled': gameType == 'MOBA'}">Number of players in team:</label>
+    <div class="dialog-picker" [ngClass]="{'disabled': gameType == 'MOBA'}">
       <ng-number-picker aria-labelledby="number-picker-label"
             [(value)]="numberOfPlayers"
             [min]="'2'"

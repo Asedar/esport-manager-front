@@ -1,12 +1,19 @@
-<div class="randomizer-container">
-    <app-navbar></app-navbar>
-    <div class="options" (click)="openDialog()"></div>
+<app-navbar></app-navbar>
+<div class="randomizer-container" *ngIf="optionsHidden">
+    <div class="header">
+        <div class="header-title">
+            <h1 class="colored title">Randomizer</h1>
+            <h5 class="description">Generate randomly two teams for your custom match</h5>
+        </div>
+        <div class="options" (click)="openDialog()"></div>
+    </div>
     <form class="input-box" (ngSubmit)="randomize()" [formGroup]="playerInputs">
         <div class="input-container">
             <div *ngFor="let player of players; let i = index">
                 <app-randomizer-input [gameType]="gameType" [formGroup]="playerInputs.get('player' + i)"></app-randomizer-input>
             </div>   
         </div>
+        <div class="break"></div> 
         <button mat-raised-button>Randomize</button>
     </form> 
 </div>

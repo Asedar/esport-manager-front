@@ -1,15 +1,19 @@
 .randomizer-container {
     height: 100%;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .input-box {
-    height: 100%;
+    height: auto;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 70px;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 300px;
 }
 
 .input-container {
@@ -20,7 +24,6 @@
     width: 1050px;
     min-width: 500px;
     height: auto;
-    
 }
 
 .input-container >* {
@@ -39,7 +42,40 @@
     background-size: cover;
     width: 60px;
     height: 60px;
-    position: absolute;
-    right: 30px;
-    top: 100px;
+}
+
+.header{
+    margin-top: 15px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header-title {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 50px;
+}
+
+.description {
+    color: white;
+}
+
+button {
+    background: #fc0254;
+    color: white;
+    width: 300px;
+    height: 50px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
 }
