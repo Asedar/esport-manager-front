@@ -30,6 +30,8 @@
     background-color: white;
     border: 4px solid  #fc0254;
     border-radius: 5px;
+    display: border-box;
+    height: auto;
 }
 
 .options {

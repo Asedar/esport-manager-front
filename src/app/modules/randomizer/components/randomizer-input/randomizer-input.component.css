@@ -1,7 +1,11 @@
 .main-container {
     font-size: 14px;
     height: 100%;
-    overflow: hidden;
+}
+
+.bigger  {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .nick {
@@ -24,5 +28,9 @@
 
 :host ::ng-deep .mat-form-field-wrapper{
     margin: 0 !important;
-    padding: 1px;
-  }
+    padding: 3px;
+}
+
+mat-error {
+    margin-top: 12px;
+}
