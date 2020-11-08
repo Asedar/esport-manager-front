@@ -12,6 +12,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { NavbarModule } from './modules/navbar/navbar.module';
 import { RandomizerModule } from './modules/randomizer/randomizer.module';
+import { TeamsModule } from './modules/teams/teams.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { RandomizerModule } from './modules/randomizer/randomizer.module';
     StartingPageModule,
     NavbarModule,
     RandomizerModule,
+    TeamsModule,
     BrowserAnimationsModule,
     ErrorPagesModule,
     HttpClientModule,

@@ -1,0 +1,15 @@
+<div class="dialog-container">
+
+    <div class="header">
+        <h1 class="colored">{{data.team.name}}</h1>
+        <div class="close" (click)="exit()"></div>
+    </div>
+      
+    <div mat-dialog-content>
+        <div>Captain: {{data.team.captain.nick}}</div>
+        <div>Players: </div>
+        <div *ngFor="let player of data.team.players">
+            <div>{{player.nick}}</div>
+        </div>  
+    </div>   
+</div>

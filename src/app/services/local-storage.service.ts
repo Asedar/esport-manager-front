@@ -11,6 +11,10 @@ export class LocalStorageService {
     return sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
   }
 
+  getUserID(): string {
+    return sessionStorage.getItem('userID') || localStorage.getItem('userID');
+  }
+
   setUserToken(token: string, rememberMe: boolean) {
     if(rememberMe) {
       localStorage.setItem('userToken', token);
@@ -20,8 +24,19 @@ export class LocalStorageService {
     }
   }
 
+  setUserID(id: string, rememberMe: boolean) {
+    if(rememberMe) {
+      localStorage.setItem('userID', id);
+    }
+    else {
+      sessionStorage.setItem('userID', id);
+    }
+  }
+
   logout() {
     localStorage.removeItem('userToken');
+    localStorage.removeItem('userID');
     sessionStorage.removeItem('userToken');
+    sessionStorage.removeItem('userID');
   }
 }

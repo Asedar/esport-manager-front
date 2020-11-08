@@ -28,7 +28,9 @@ export class AuthService {
     return this.http.post(URL + 'auth', body)
       .pipe(tap(
         res => {
-          this.storageService.setUserToken(res.data.accessToken, form.get('rememberMe').value)
+          this.storageService.setUserToken(res.data.accessToken, form.get('rememberMe').value);
+          const tokenPayload = this.jwtHelper.decodeToken(res.data.accessToken);
+          this.storageService.setUserID(tokenPayload._id, form.get('rememberMe').value)
         }
       ));
   }

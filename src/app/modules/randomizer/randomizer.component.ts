@@ -15,7 +15,7 @@ export class RandomizerComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private randomizeService: RandomizerService) { }
 
-  players: Player[];
+  players: Player[] = [];
   shouldBeRendered: boolean;
   gameType = 'MOBA';
   playerInputs: FormGroup;
@@ -30,18 +30,8 @@ export class RandomizerComponent implements OnInit {
       if(result) {
         this.gameType = result.gameType;
         this.players = [];
-        let playerFormTemplate = {};
         const numberOfPlayers = this.gameType == 'OTHER' ? result.numberOfPlayers : 5
-        for(let i = 0; i < numberOfPlayers * 2; i++) {
-          this.players.push(new Player());
-          let playerControlTemplate = {input: new FormControl('', Validators.required)};
-          if(this.gameType === 'MOBA') {
-            playerControlTemplate['position'] = new FormControl('Top', Validators.required);
-            playerControlTemplate['randomizeType'] = new FormControl('1', Validators.required);
-          }
-          playerFormTemplate['player' + i] = new FormGroup(playerControlTemplate);
-        }
-        this.playerInputs = new FormGroup(playerFormTemplate);
+        this.createFormGroup(numberOfPlayers);
         if(!this.formLoaded) {
           this.playerInputs.valueChanges.subscribe(change => {
             this.checkPositionSettings();
@@ -51,6 +41,20 @@ export class RandomizerComponent implements OnInit {
       }
       this.optionsHidden = true;
     });
+  }
+
+  createFormGroup(numberOfPlayers: number) {
+    let playerFormTemplate = {};
+    for(let i = 0; i < numberOfPlayers * 2; i++) {
+      this.players.push(new Player());
+      let playerControlTemplate = {input: new FormControl('', Validators.required)};
+      if(this.gameType === 'MOBA') {
+        playerControlTemplate['position'] = new FormControl('Top', Validators.required);
+        playerControlTemplate['randomizeType'] = new FormControl('1', Validators.required);
+      }
+      playerFormTemplate['player' + i] = new FormGroup(playerControlTemplate);
+    }
+    this.playerInputs = new FormGroup(playerFormTemplate);
   }
 
   randomize() {
@@ -114,6 +118,7 @@ export class RandomizerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.createFormGroup(5);
     this.openDialog();
   }
 

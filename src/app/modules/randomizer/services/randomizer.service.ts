@@ -140,5 +140,24 @@ export class RandomizerService {
     }
   }
 
+  randomizeOther(players: Player[]) {
+    let team1 = [...players];
+    let team2 = [];
+    for (let i = team1.length - 1; i > 0; i--) 
+    {
+      let j = Math.floor(Math.random() * (i + 1));
+      let temp = team1[i];
+      team1[i] = team1[j];
+      team1[j] = temp;
+    }
+    for(let g = 0; g < players.length / 2; g++)
+    {
+
+        team2.push(team1[g]);
+        team1.splice(g, 1);
+    }
+    return {team1: team1, team2: team2};
+  }
+
   constructor() { }
 }

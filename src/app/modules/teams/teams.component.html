@@ -1,0 +1,13 @@
+<app-navbar></app-navbar>
+<div class="teams-container">
+    <div class="header">
+        <h1 class="colored title">My teams</h1>
+        <button (click)="joinTeam()">Join team</button>
+        <button (click)="createTeam()">Create new team</button>
+    </div>
+    <div class="teams-box">
+        <div class="team" *ngFor="let team of teams">
+            <app-team-card (click)="teamDetails(team)" [team]="team"></app-team-card>
+        </div>
+    </div>
+</div>
