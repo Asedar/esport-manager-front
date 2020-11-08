@@ -43,7 +43,7 @@
                             <mat-error *ngIf="form.controls['password'].invalid">{{getPasswordErrorMessage()}}</mat-error>
                         </mat-form-field>
 
-                        <div class="register-message register-error" *ngIf="registerError">
+                        <div class="alert alert-danger" *ngIf="registerError">
                             <div *ngFor="let message of errorMessages">
                                 {{message}}
                             </div>

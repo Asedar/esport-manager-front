@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { RandomizerDialogComponent } from './components/randomizer-dialog/randomizer-dialog.component';
+import { RandomizerResultsComponent } from './components/randomizer-results/randomizer-results.component';
 import { Player } from './models/player.model';
 import { RandomizerService } from './services/randomizer.service';
 
@@ -19,6 +20,7 @@ export class RandomizerComponent implements OnInit {
   gameType = 'MOBA';
   playerInputs: FormGroup;
   optionsHidden = true;
+  formLoaded = false;
 
   openDialog(): void {
     this.optionsHidden = false;
@@ -40,6 +42,12 @@ export class RandomizerComponent implements OnInit {
           playerFormTemplate['player' + i] = new FormGroup(playerControlTemplate);
         }
         this.playerInputs = new FormGroup(playerFormTemplate);
+        if(!this.formLoaded) {
+          this.playerInputs.valueChanges.subscribe(change => {
+            this.checkPositionSettings();
+          })
+          this.formLoaded = true;
+        }
       }
       this.optionsHidden = true;
     });
@@ -54,10 +62,55 @@ export class RandomizerComponent implements OnInit {
           this.players[index].position = (this.playerInputs.controls[key] as FormGroup).get('position').value;
         }
       });
-      let team1 = [];
-      let team2 = []
-      this.randomizeService.randomize(this.players, team1, team2);
+
+      const result = this.randomizeService.randomize(this.players);
+      this.showResults(result.team1, result.team2);
     }
+  }
+
+  checkPositionSettings() {
+    let forced: Map<string, number> = new Map<string, number>();
+    let avoided: Map<string, number> = new Map<string, number>();
+
+    for(const key in this.playerInputs.controls) {
+      let position = (this.playerInputs.controls[key] as FormGroup).get('position').value;
+      let type = (this.playerInputs.controls[key] as FormGroup).get('randomizeType').value;
+      if(type == 2) {
+        if(avoided.has(position)) {
+          let count = avoided.get(position);
+          avoided.set(position, count + 1);
+          if (avoided.get(position) > 8) {
+            return 'avoided';
+          }
+        } 
+        else {
+          avoided.set(position, 1);
+        }
+      }
+      else if (type == 3) {
+        if(forced.has(position)) {
+          let count = forced.get(position);
+          forced.set(position, count + 1);
+          if (forced.get(position) > 2) {
+            return 'forced';
+          }
+        } 
+        else {
+          forced.set(position, 1);
+        }
+      }
+    }
+    return ''
+  }
+
+  showResults(team1: Player[], team2: Player[]){
+    const data = {
+      playerInputs: this.playerInputs,
+      team1: team1,
+      team2: team2,
+      players: this.players
+    }
+    const dialogRef = this.dialog.open(RandomizerResultsComponent, { disableClose: true, data: data });
   }
 
   ngOnInit(): void {

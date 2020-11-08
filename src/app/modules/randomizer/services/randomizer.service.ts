@@ -7,9 +7,9 @@ import { Player } from '../models/player.model';
 })
 export class RandomizerService {
 
-  public randomize(players: Player[], team1: Player[], team2: Player[]){
-    team1 = [...players];
-    team2 = [];
+  public randomize(players: Player[]){
+    let team1 = [...players];
+    let team2 = [];
     let positions = ["Top", "Top", "Jungle", "Jungle", "Mid", "Mid", "Bottom", "Bottom", "Support", "Support"];
     let roles = ["Top", "Jungle", "Mid", "Bottom", "Support"];
 
@@ -51,13 +51,74 @@ export class RandomizerService {
     players.forEach((player: Player) =>{
       player.previousPosition = player.assignedPosition;
     })
-    console.log(team1);
-    console.log(team2);
-    console.log(players);
+    return {team1: team1, team2: team2}
   }
 
-  public rollAgain() {
+  public rollAgain(players: Player[]) {
+    console.log(players);
+    let team1 = [...players];
+    let team2 = [];
+    let positions = ["Top", "Top", "Jungle", "Jungle", "Mid", "Mid", "Bottom", "Bottom", "Support", "Support"];
+    let roles = ["Top", "Jungle", "Mid", "Bottom", "Support"];
 
+    team1.forEach(x => {
+        if(x.randomizeType != 3 )
+            x.assignedPosition = "";
+        else
+        {
+            positions.splice(positions.indexOf(x.position), 1);
+        }
+    });
+  
+    for (let i = team1.length - 1; i > 0; i--) 
+    {
+        let j = Math.floor(Math.random() * (i + 1));
+        let temp = team1[i];
+        team1[i] = team1[j];
+        team1[j] = temp;
+    }
+
+    for(let y = 0; y < 10; y++)
+    {
+        if(team1[y].assignedPosition == "")
+        {   
+            let rand = Math.floor(Math.random() * positions.length);
+            team1[y].assignedPosition = positions[rand];
+            positions.splice(rand, 1);
+        }
+    }
+    this.validatePositions(team1);
+
+    for(let x = 9; x >= 0; x--)
+    {
+        if(team1[x].randomizeType !== 3 && team1[x].assignedPosition == team1[x].previousPosition)
+        {
+            for(let y = 0; y < 10; y++)
+            {
+                if(team1[x].randomizeType !== 3 && team1[y].assignedPosition != team1[x].previousPosition && team1[y].previousPosition != team1[x].assignedPosition && (team1[y].randomizeType != 2 || (team1[y].randomizeType == 2 && team1[y].position != team1[x].assignedPosition)) && ( team1[x].randomizeType != 2 || (team1[x].randomizeType == 2 && team1[x].position != team1[y].assignedPosition)))
+                {
+                    let temp = team1[y].assignedPosition;
+                    team1[y].assignedPosition = team1[x].assignedPosition;
+                    team1[x].assignedPosition = temp;
+                    break;
+                }
+            }
+        }
+    }
+  
+    team1.forEach(x => 
+    {
+        x.nick = x.previousPosition;
+        x.previousPosition = x.assignedPosition;
+    });
+
+    for(let g = 0; g < 5; g++)
+    {
+        let playerIndex = team1.map(item => {return item.assignedPosition}).indexOf(roles[g])
+        team2.push(team1[playerIndex]);
+        team1.splice(playerIndex, 1);
+    }
+    return {team1: team1, team2: team2}
   }
 
   private validatePositions(team: Player[]) {
@@ -75,14 +136,6 @@ export class RandomizerService {
             break;
           }
         }
-      }
-    }
-    for(let z = 0; z < 10; z++)
-    {
-      if(team[z].randomizeType == 2 && team[z].assignedPosition == team[z].position)
-      {
-        alert("It is impossible to assign positions in that way");
-        break;
       }
     }
   }

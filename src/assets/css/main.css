@@ -37,3 +37,6 @@ a:focus, button:focus {
     color: #fc0254;
 }
 
+.alert {
+	text-align: center;
+}

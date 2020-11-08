@@ -1,0 +1,48 @@
+<div class="dialog-container">
+
+    <div class="header">
+      <h1 class="colored">Options</h1>
+      <div class="close" (click)="exit()"></div>
+    </div>
+    
+    <div mat-dialog-content>
+      <div class="team">
+        <div *ngFor="let player1 of data.team1">
+          <div>
+            {{player1.nick}}
+          </div>
+        </div>
+        <div>
+          <div>
+            end
+          </div>
+          <div>
+            Top
+          </div>
+          <div>
+            Jungle
+          </div>
+          <div>
+            Mid
+          </div>
+          <div>
+            Bottom
+          </div>
+          <div>
+            Support
+          </div>
+          <div>
+            end
+          </div>
+        </div>
+        <div *ngFor="let player2 of data.team2">
+          <div>
+            {{player2.nick}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="dialog-button" mat-raised-button (click)="rollAgain()">Roll again</button>
+    <button class="dialog-button" mat-raised-button mat-dialog-close (click)="exit">Ok</button>
+
+</div>

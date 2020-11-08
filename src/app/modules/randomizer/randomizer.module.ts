@@ -16,12 +16,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { NumberPickerModule } from 'ng-number-picker';
+import { RandomizerResultsComponent } from './components/randomizer-results/randomizer-results.component';
 
 @NgModule({
   declarations: [
     RandomizerComponent,
     RandomizerInputComponent,
-    RandomizerDialogComponent
+    RandomizerDialogComponent,
+    RandomizerResultsComponent
   ],
   imports: [
     CommonModule,
@@ -42,6 +44,6 @@ import { NumberPickerModule } from 'ng-number-picker';
     NumberPickerModule,
     FormsModule
   ],
-  entryComponents: [RandomizerDialogComponent]
+  entryComponents: [RandomizerDialogComponent, RandomizerResultsComponent]
 })
 export class RandomizerModule { }
