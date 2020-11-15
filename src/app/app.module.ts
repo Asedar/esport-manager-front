@@ -13,6 +13,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { NavbarModule } from './modules/navbar/navbar.module';
 import { RandomizerModule } from './modules/randomizer/randomizer.module';
 import { TeamsModule } from './modules/teams/teams.module';
+import { TournamentModule } from './modules/tournament/tournament.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { TeamsModule } from './modules/teams/teams.module';
     NavbarModule,
     RandomizerModule,
     TeamsModule,
+    TournamentModule,
     BrowserAnimationsModule,
     ErrorPagesModule,
     HttpClientModule,

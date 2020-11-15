@@ -6,9 +6,9 @@
     </div>
     
     <form (ngSubmit)="create()" *ngIf="!success" [formGroup]="form" mat-dialog-content>
-        <label id="radio-group-label">Enter invite code:</label>
+        <label id="radio-group-label">Enter team name:</label>
         <mat-form-field appearance="fill">
-            <mat-label>Enter team name:</mat-label>
+            <mat-label>Name:</mat-label>
             <input matInput placeholder="Name" [formControl]="form.controls['name']" required>
             <mat-error *ngIf="form.controls['name']">Field required</mat-error>
         </mat-form-field>       

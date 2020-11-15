@@ -1,0 +1,69 @@
+<div class="dialog-container">
+
+    <div class="header">
+      <h1 class="colored">Create new tournament</h1>
+      <div class="close" (click)="exit()"></div>
+    </div>
+    
+    <form (ngSubmit)="create()" *ngIf="!success" [formGroup]="form" mat-dialog-content>
+        <mat-form-field appearance="fill">
+            <mat-label>Name:</mat-label>
+            <input matInput placeholder="Name" [formControl]="form.controls['name']" required>
+            <mat-error *ngIf="form.controls['name']">Field required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Description:</mat-label>
+            <input matInput placeholder="Description" [formControl]="form.controls['description']" required>
+            <mat-error *ngIf="form.controls['description']">Field required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="position-select">
+            <mat-select [formControl]="form.controls['game']">
+              <mat-option *ngFor="let option of options" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <label id="number-picker-label">Number of players in team:</label>
+        <div class="dialog-picker">
+            <ng-number-picker aria-labelledby="number-picker-label"
+                    [(value)]="numberOfPlayers"
+                    [min]="'1'"
+                    [max]="'10'"
+                    [step]="'1'"
+                    [buttonsOrientation]="'h'"
+                    [size]="'sm'"
+                    [showDownButton]="true"
+                    [showUpButton]="true"
+                    [inputReadOnly]="false"
+                    [mouseWheel]="true"
+                    [arrowKeys]="true"
+            ></ng-number-picker>
+        </div>
+        <label id="team-picker-label">Max number of teams:</label>
+        <div class="dialog-picker">
+            <ng-number-picker aria-labelledby="team-picker-label"
+                    [(value)]="numberOfTeams"
+                    [min]="'4'"
+                    [max]="'1024'"
+                    [step]="'1'"
+                    [buttonsOrientation]="'h'"
+                    [size]="'sm'"
+                    [showDownButton]="true"
+                    [showUpButton]="true"
+                    [inputReadOnly]="false"
+                    [mouseWheel]="true"
+                    [arrowKeys]="true"
+            ></ng-number-picker>
+        </div>
+        <label id="radio-group-label">Choose format:</label>
+        <mat-radio-group class="dialog-radio" aria-labelledby="radio-group-label" [formControl]="form.controls['format']" required>
+            <mat-radio-button value="single-elimination">Single elimination bracket</mat-radio-button>
+            <mat-radio-button value="robin">Round Robin</mat-radio-button>
+          </mat-radio-group>
+        <button *ngIf="!success" class="dialog-button" mat-raised-button>Create</button>
+    </form>
+    <div *ngIf="fail" class="alert alert-danger">Something went wrong, try again later</div>
+    <div *ngIf="success" class="alert alert-success">Invite code: {{code}}</div>
+    <button *ngIf="success" class="dialog-button" (click)="exit()" mat-raised-button>Ok</button>
+    
+</div>

@@ -108,7 +108,6 @@ export class RandomizerService {
   
     team1.forEach(x => 
     {
-        x.nick = x.previousPosition;
         x.previousPosition = x.assignedPosition;
     });
 
