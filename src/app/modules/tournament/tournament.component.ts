@@ -35,6 +35,7 @@ export class TournamentComponent implements OnInit {
             this.tournamentsPlayer.push(Deserialize(item, Tournament));
           })
         });
+        console.log(this.tournamentsAdmin);
       })
     })
   }

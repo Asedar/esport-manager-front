@@ -47,12 +47,19 @@ export class TournamentCreateComponent implements OnInit {
         game: this.form.get('game').value,
         format: this.form.get('name').value,
         playersInTeam: this.numberOfPlayers,
-        maxTeams: this.form.get('maxTeams')
+        maxTeams: this.numberOfTeams
       }
       this.trnService.getConfig().subscribe(config => {
-        this.trnService.createTournament(config.apiURL, data).subscribe(res => {
-          console.log(res);
-        })
+        this.trnService.createTournament(config.apiURL, data).subscribe(
+          (res: any) => {
+            this.success = true;
+            this.fail = false;
+            this.code = res.message;
+          },
+          error => {
+            this.fail = true;
+          }
+        )
       });
     }
   }

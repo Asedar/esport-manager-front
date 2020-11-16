@@ -5,9 +5,16 @@
         <button >Join tournament</button>
         <button (click)="createTournament()">Create new tournament</button>
     </div>
-    <div class="teams-box">
-        <div class="team" >
-            
+    <div class="tournament-box">
+        <h3 class="colored title">Tournaments you created:</h3>
+        <div class="tournament" *ngFor="let tournament of tournamentsAdmin" >
+            <app-tournament-card [tournament]="tournament"></app-tournament-card>
+        </div>
+    </div>
+    <div class="tournament-box">
+        <h3 class="colored title">Tournaments you participate in:</h3>
+        <div class="tournament" *ngFor="let tournament of tournamentsPlayer">
+            <app-tournament-card [tournament]="tournament"></app-tournament-card>
         </div>
     </div>
 </div>

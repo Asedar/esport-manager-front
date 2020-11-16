@@ -1,1 +1,18 @@
-<p>tournament-card works!</p>
+<div class="card-container">
+
+    <div class="tournament-info">
+        <h2>{{tournament.name}}</h2>
+        <div>
+            {{tournament.game}}
+        </div>
+        <div>
+            Format: {{tournament.format == 'robin' ? 'Round robin' : 'Single elimination'}}
+        </div>
+        <div>
+            Date: {{tournament.startDate}}
+        </div>
+        <div>
+            Status: {{tournament.status}}
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Tournament } from './../../models/tournament.model';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tournament-card',
@@ -12,4 +13,5 @@ export class TournamentCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @Input() tournament: Tournament
 }
