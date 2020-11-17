@@ -23,5 +23,7 @@ export class TournamentService {
     return this.http.get(this.configUrl);
   }
 
-  
+  public joinTournament(URL: string, joinCode: string): Observable<any> {
+    return this.http.patch(URL + 'tournaments/join', {joinCode: joinCode});
+  }
 }
