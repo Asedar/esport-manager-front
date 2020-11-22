@@ -1,3 +1,5 @@
+@import '~ng-tournament-tree/styles/ngtt-single-elimination-styles';
+
 html, body {
 	height: 100%;
     font-family: 'Roboto', sans-serif;
@@ -44,4 +46,15 @@ a:focus, button:focus {
 
 .alert {
 	text-align: center;
+}
+
+.ngtt-se__container {
+	display: flex;
+	justify-content: center;
+	background-color: rgba(0,0,0,0);
+}
+
+.ngtt-se__bracket-wrapper{
+	max-width: 100%;
+	overflow: auto;
 }

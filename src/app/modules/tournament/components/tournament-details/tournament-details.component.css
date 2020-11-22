@@ -1,3 +1,11 @@
 div {
     color: white;
 }
+
+app-tournament-match {
+    width: 100%;
+}
+
+.tab-color {
+    color:  white;
+}

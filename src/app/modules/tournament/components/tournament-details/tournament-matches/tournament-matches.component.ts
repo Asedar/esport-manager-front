@@ -23,7 +23,7 @@ export class TournamentMatchesComponent implements OnInit {
     const userID = this.storageService.getUserID();
     if(userID === match.team1.captain._id || userID === match.team2.captain._id) {
 
-      const dialogRef = this.dialog.open(TournamentScoreComponent, { disableClose: true, data: {match: match} });
+      const dialogRef = this.dialog.open(TournamentScoreComponent, { disableClose: true, data: {match: match, type:'robin'} });
 
       dialogRef.afterClosed().subscribe(result => {
         if(result) {

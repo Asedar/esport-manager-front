@@ -13,6 +13,14 @@
             <mat-error *ngIf="form.controls['code']">Every code should be exactly 8 letters long</mat-error>
             <div *ngIf="result" class="alert alert-danger">{{errorMessage}}</div>
         </mat-form-field>
+        <label id="select-label">Choose team:</label>
+        <mat-form-field appearance="outline" class="position-select">
+            <mat-select [formControl]="form.controls['team']">
+              <mat-option *ngFor="let option of options" [value]="option._id">
+                {{option.name}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
         <button class="dialog-button" mat-raised-button>Ok</button>
     </form>
     

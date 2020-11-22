@@ -2,12 +2,14 @@
 <div class="tournament-container" *ngIf="tournament">
     <div class="header">
         <h1 class="colored title">{{tournament.name}}</h1>
+        <button *ngIf="tournament.teams.length >= 4 && tournament.status == 'created'" (click)="createBracket()" class="colored-btn" mat-raised-button>Create bracket</button>
+        <button *ngIf="tournament.status != 'end'"(click)="endTournament()" class="colored-btn" mat-raised-button>End tournament</button>
     </div>
     <div>
         {{tournament.game}}
     </div>
     <mat-tab-group>
-        <mat-tab label="Description"> 
+        <mat-tab class="tab-color" label="Description"> 
             <div>
                 {{tournament.description}}
             </div>
@@ -31,7 +33,17 @@
             </div>    
         </mat-tab>
         <mat-tab label="Matches"> 
-            <app-tournament-matches *ngIf="tournament.format === 'robin'" [matches]="tournament.matches"></app-tournament-matches>    
+            <app-tournament-matches *ngIf="tournament.format === 'robin'" [matches]="tournament.matches"></app-tournament-matches>
+            <div *ngIf="tournament.format === 'single-elimination'">
+                <ngtt-single-elimination-tree 
+                    [tournament]="myTournamentData" 
+                    [matchTemplate]="myMatchTemplate">
+                </ngtt-single-elimination-tree>
+                
+                <ng-template #myMatchTemplate let-match>
+                    <app-tournament-match [match]="match"></app-tournament-match>
+                </ng-template>
+            </div> 
         </mat-tab>
     </mat-tab-group>
     

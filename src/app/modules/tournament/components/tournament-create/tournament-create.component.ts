@@ -46,7 +46,7 @@ export class TournamentCreateComponent implements OnInit {
         name: this.form.get('name').value,
         description: this.form.get('description').value,
         game: this.form.get('game').value,
-        format: this.form.get('name').value,
+        format: this.form.get('format').value,
         playersInTeam: this.numberOfPlayers,
         maxTeams: this.numberOfTeams
       }

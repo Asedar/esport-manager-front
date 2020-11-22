@@ -19,10 +19,13 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import {MatTabsModule} from '@angular/material/tabs';
 import { TournamentMatchesComponent } from './components/tournament-details/tournament-matches/tournament-matches.component';
 import { TournamentScoreComponent } from './components/tournament-details/tournament-score/tournament-score.component';
-
+import { TournamentMatchComponent } from './components/tournament-details/tournament-match/tournament-match.component';
+import { NgTournamentTreeModule } from 'ng-tournament-tree';
+import {MatDividerModule} from '@angular/material/divider';
+import { TournamentAlertComponent } from './components/tournament-details/tournament-alert/tournament-alert.component';
 
 @NgModule({
-  declarations: [TournamentComponent, TournamentCardComponent, TournamentDetailsComponent, TournamentCreateComponent, TournamentJoinComponent, TournamentMatchesComponent, TournamentScoreComponent],
+  declarations: [TournamentComponent, TournamentCardComponent, TournamentDetailsComponent, TournamentCreateComponent, TournamentJoinComponent, TournamentMatchesComponent, TournamentScoreComponent, TournamentMatchComponent, TournamentAlertComponent],
   imports: [
     CommonModule,
     TournamentRoutingModule,
@@ -36,6 +39,8 @@ import { TournamentScoreComponent } from './components/tournament-details/tourna
     MatRadioModule,
     NgxSpinnerModule,
     MatTabsModule,
+    NgTournamentTreeModule,
+    MatDividerModule
   ]
 })
 export class TournamentModule { }
