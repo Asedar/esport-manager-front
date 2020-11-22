@@ -2,7 +2,7 @@ import { deserialize} from 'cerialize';
 
 export class Player{
     @deserialize
-    nick: string;
+    nick?: string;
 
     @deserialize
     _id?: string;

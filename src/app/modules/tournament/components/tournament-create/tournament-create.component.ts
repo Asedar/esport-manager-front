@@ -40,6 +40,7 @@ export class TournamentCreateComponent implements OnInit {
   }
 
   create() {
+    this.form.markAllAsTouched();
     if(this.form.valid) {
       const data = {
         name: this.form.get('name').value,

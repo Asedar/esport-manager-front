@@ -15,10 +15,14 @@ import { TournamentJoinComponent } from './components/tournament-join/tournament
 import { MatSelectModule } from '@angular/material/select';
 import { NumberPickerModule } from 'ng-number-picker';
 import { MatRadioModule } from '@angular/material/radio';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import {MatTabsModule} from '@angular/material/tabs';
+import { TournamentMatchesComponent } from './components/tournament-details/tournament-matches/tournament-matches.component';
+import { TournamentScoreComponent } from './components/tournament-details/tournament-score/tournament-score.component';
 
 
 @NgModule({
-  declarations: [TournamentComponent, TournamentCardComponent, TournamentDetailsComponent, TournamentCreateComponent, TournamentJoinComponent],
+  declarations: [TournamentComponent, TournamentCardComponent, TournamentDetailsComponent, TournamentCreateComponent, TournamentJoinComponent, TournamentMatchesComponent, TournamentScoreComponent],
   imports: [
     CommonModule,
     TournamentRoutingModule,
@@ -30,6 +34,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatSelectModule,
     NumberPickerModule,
     MatRadioModule,
+    NgxSpinnerModule,
+    MatTabsModule,
   ]
 })
 export class TournamentModule { }

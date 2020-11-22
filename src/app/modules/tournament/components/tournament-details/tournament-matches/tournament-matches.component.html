@@ -1,0 +1,14 @@
+<div *ngFor="let match of matches; let i = index" (click)="setScore(match)">
+    <div>
+        {{i + 1}}.
+    </div>
+    <div [ngClass]="{'colored': match.winner === 1}">
+        {{match.team1.name}}
+    </div>
+    <div>
+        vs
+    </div>
+    <div [ngClass]="{'colored': match.winner === 2}">
+        {{match.team2.name}}
+    </div>
+</div>

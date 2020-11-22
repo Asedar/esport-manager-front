@@ -55,7 +55,6 @@ export class RandomizerService {
   }
 
   public rollAgain(players: Player[]) {
-    console.log(players);
     let team1 = [...players];
     let team2 = [];
     let positions = ["Top", "Top", "Jungle", "Jungle", "Mid", "Mid", "Bottom", "Bottom", "Support", "Support"];

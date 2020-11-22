@@ -1,1 +1,40 @@
-<p>tournament-details works!</p>
+<app-navbar></app-navbar>
+<div class="tournament-container" *ngIf="tournament">
+    <div class="header">
+        <h1 class="colored title">{{tournament.name}}</h1>
+    </div>
+    <div>
+        {{tournament.game}}
+    </div>
+    <mat-tab-group>
+        <mat-tab label="Description"> 
+            <div>
+                {{tournament.description}}
+            </div>
+        </mat-tab>
+        <mat-tab label="Teams"> 
+            <div *ngFor="let team of tournament.teams">
+                <div>
+                    {{team.name}}
+                </div>
+                <div>
+                    Captain: {{team.captain.nick}}
+                </div>
+                <div>
+                    Players: 
+                </div>
+                <div *ngFor="let player of team.players">
+                    <div>
+                        {{player.nick}}
+                    </div>
+                </div>
+            </div>    
+        </mat-tab>
+        <mat-tab label="Matches"> 
+            <app-tournament-matches *ngIf="tournament.format === 'robin'" [matches]="tournament.matches"></app-tournament-matches>    
+        </mat-tab>
+    </mat-tab-group>
+    
+    
+
+</div>

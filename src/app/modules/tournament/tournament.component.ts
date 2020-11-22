@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Deserialize } from 'cerialize';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { TournamentCreateComponent } from './components/tournament-create/tournament-create.component';
 import { TournamentJoinComponent } from './components/tournament-join/tournament-join.component';
 import { Tournament } from './models/tournament.model';
@@ -13,7 +14,7 @@ import { TournamentService } from './services/tournament.service';
 })
 export class TournamentComponent implements OnInit {
 
-  constructor(private trnService: TournamentService, public dialog: MatDialog) { }
+  constructor(private trnService: TournamentService, public dialog: MatDialog, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.loadTournaments();
@@ -23,6 +24,7 @@ export class TournamentComponent implements OnInit {
   tournamentsPlayer: Tournament[];
 
   loadTournaments() {
+    this.spinner.show();
     this.trnService.getConfig().subscribe(config => {
       this.trnService.getMyTournaments(config.apiURL).subscribe(data => {
         this.tournamentsAdmin = [];
@@ -36,7 +38,7 @@ export class TournamentComponent implements OnInit {
             this.tournamentsPlayer.push(Deserialize(item, Tournament));
           })
         });
-        console.log(this.tournamentsAdmin);
+        this.spinner.hide();
       })
     })
   }

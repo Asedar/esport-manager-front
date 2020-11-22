@@ -25,7 +25,7 @@ export class RandomizerResultsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.data)
+
   }
 
   exit(): void {

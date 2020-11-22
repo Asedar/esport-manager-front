@@ -1,0 +1,16 @@
+<div class="dialog-container">
+
+    <div class="header">
+      <h1 class="colored">Who won?</h1>
+      <div class="close" (click)="exit()"></div>
+    </div>
+    
+    <form (ngSubmit)="submit()" [formGroup]="form" mat-dialog-content>
+        <mat-radio-group class="radio-group" [formControl]="form.get('winner')">
+            <mat-radio-button value="1">{{data.match.team1.name}}</mat-radio-button>
+            <mat-radio-button value="2">{{data.match.team2.name}}</mat-radio-button>
+        </mat-radio-group>
+        <button class="dialog-button" mat-raised-button>Ok</button>
+    </form>
+    
+</div>

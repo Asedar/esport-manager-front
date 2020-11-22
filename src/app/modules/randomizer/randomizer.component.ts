@@ -58,6 +58,7 @@ export class RandomizerComponent implements OnInit {
   }
 
   randomize() {
+    this.playerInputs.markAllAsTouched();
    if(this.playerInputs.valid) {
       Object.keys(this.playerInputs.controls).forEach((key, index) => {
         this.players[index].nick = (this.playerInputs.controls[key] as FormGroup).get('input').value;

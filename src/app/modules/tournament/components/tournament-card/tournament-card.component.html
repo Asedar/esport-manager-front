@@ -1,4 +1,4 @@
-<div class="card-container">
+<a [routerLink]="['/tournaments', tournament._id]" class="card-container">
 
     <div class="tournament-info">
         <h2>{{tournament.name}}</h2>
@@ -15,4 +15,4 @@
             Status: {{tournament.status}}
         </div>
     </div>
-</div>
+</a>

@@ -26,6 +26,7 @@ export class TournamentJoinComponent implements OnInit {
   }
 
   join() {
+    this.form.markAllAsTouched();
     if(this.form.valid) {
       this.result = false;
       this.tournamentService.getConfig().subscribe(config => {

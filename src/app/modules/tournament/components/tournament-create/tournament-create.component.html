@@ -13,7 +13,14 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Description:</mat-label>
-            <input matInput placeholder="Description" [formControl]="form.controls['description']" required>
+            <textarea matInput
+              cdkTextareaAutosize
+              cdkAutosizeMinRows="5"
+              cdkAutosizeMaxRows="5" 
+              placeholder="Description" 
+              [formControl]="form.controls['description']" 
+              required>
+            </textarea>
             <mat-error *ngIf="form.controls['description']">Field required</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" class="position-select">
@@ -56,8 +63,8 @@
             ></ng-number-picker>
         </div>
         <label id="radio-group-label">Choose format:</label>
-        <mat-radio-group class="dialog-radio" aria-labelledby="radio-group-label" [formControl]="form.controls['format']" required>
-            <mat-radio-button value="single-elimination">Single elimination bracket</mat-radio-button>
+        <mat-radio-group class="dialog-radio" aria-labelledby="radio-group-label" [formControl]="form.controls['format']">
+            <mat-radio-button value="single-elimination" [checked]="true">Single elimination bracket</mat-radio-button>
             <mat-radio-button value="robin">Round Robin</mat-radio-button>
           </mat-radio-group>
         <button *ngIf="!success" class="dialog-button" mat-raised-button>Create</button>
