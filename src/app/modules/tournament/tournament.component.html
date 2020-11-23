@@ -3,7 +3,6 @@
     <div class="header">
         <h1 class="colored title">Tournaments</h1>
         <button (click)="joinTournament()" class="colored-btn" mat-raised-button>Join tournament</button>
-        <button (click)="createTournament()" class="colored-btn" mat-raised-button>Create new tournament</button>
     </div>
     <div class="tournament-box" *ngIf="tournamentsAdmin">
         <h3 class="colored title">Tournaments you created:</h3>
@@ -17,5 +16,6 @@
             <app-tournament-card [tournament]="tournament"></app-tournament-card>
         </div>
     </div>
+    <button (click)="createTournament()" type="button" class="btn btn-default colored-btn btn-circle btn-xl" ></button>
 </div>
 <ngx-spinner></ngx-spinner>
