@@ -32,7 +32,7 @@ export class RandomizerComponent implements OnInit {
         this.players = [];
         const numberOfPlayers = this.gameType == 'OTHER' ? result.numberOfPlayers : 5
         this.createFormGroup(numberOfPlayers);
-        if(!this.formLoaded) {
+        if(!this.formLoaded && this.gameType === 'MOBA') {
           this.playerInputs.valueChanges.subscribe(change => {
             this.checkPositionSettings();
           })
@@ -67,8 +67,14 @@ export class RandomizerComponent implements OnInit {
           this.players[index].position = (this.playerInputs.controls[key] as FormGroup).get('position').value;
         }
       });
-
-      const result = this.randomizeService.randomize(this.players);
+      let result;
+      if(this.gameType === 'MOBA') {
+        result = this.randomizeService.randomize(this.players);
+      } 
+      else {
+        result = this.randomizeService.randomizeOther(this.players);
+      }
+      
       this.showResults(result.team1, result.team2);
     }
   }
@@ -113,7 +119,8 @@ export class RandomizerComponent implements OnInit {
       playerInputs: this.playerInputs,
       team1: team1,
       team2: team2,
-      players: this.players
+      players: this.players,
+      gameType: this.gameType
     }
     const dialogRef = this.dialog.open(RandomizerResultsComponent, { disableClose: true, data: data });
   }

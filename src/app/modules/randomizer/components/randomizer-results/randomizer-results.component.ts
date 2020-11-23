@@ -9,6 +9,7 @@ export interface DialogData {
   team1: Player[];
   team2: Player[];
   players: Player[];
+  gameType: string
 }
 
 @Component({
@@ -25,7 +26,16 @@ export class RandomizerResultsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.data.team1);
+    console.log(this.data.team2)
+  }
 
+  getTeam1(position: string) {
+    return this.data.team1.find(item => item.assignedPosition == position).nick;
+  }
+
+  getTeam2(position: string) {
+    return this.data.team2.find(item => item.assignedPosition == position).nick;
   }
 
   exit(): void {
@@ -33,7 +43,13 @@ export class RandomizerResultsComponent implements OnInit {
   }
 
   rollAgain() {
-    let result = this.randomizerService.rollAgain(this.data.players);
+    let result;
+    if(this.data.gameType == 'MOBA') {
+      result = this.randomizerService.rollAgain(this.data.players);
+    }
+    else {
+      result = this.randomizerService.randomizeOther(this.data.players);
+    }
     this.data.team1 = result.team1;
     this.data.team2 = result.team2;
   }
