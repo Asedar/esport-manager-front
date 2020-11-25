@@ -7,6 +7,7 @@ import { TeamJoinComponent } from './components/team-join/team-join.component';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { TeamCreateComponent } from './components/team-create/team-create.component';
 import { TeamDetailsComponent } from './components/team-details/team-details.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-teams',
@@ -15,7 +16,7 @@ import { TeamDetailsComponent } from './components/team-details/team-details.com
 })
 export class TeamsComponent implements OnInit {
 
-  constructor(private teamService: TeamService, public dialog: MatDialog, private localStorage: LocalStorageService) { }
+  constructor(private teamService: TeamService, public dialog: MatDialog, private localStorage: LocalStorageService, private spinner: NgxSpinnerService) { }
 
   teams: Team[] = [];
 
@@ -24,6 +25,7 @@ export class TeamsComponent implements OnInit {
   }
 
   loadTeams() {
+    this.spinner.show();
     this.teamService.getConfig().subscribe(config => {
       this.teamService.getMyTeams(config.apiURL).subscribe(teams => {
         this.teams = [];
@@ -37,6 +39,7 @@ export class TeamsComponent implements OnInit {
             team.isCaptain = true;
           }
         });
+        this.spinner.hide();
       })
     })
   }

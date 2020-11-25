@@ -14,4 +14,7 @@ export class Team{
 
     isCaptain?: boolean;
 
+    @deserialize
+    joinCode?: string
+
 }

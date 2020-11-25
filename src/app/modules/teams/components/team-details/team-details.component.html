@@ -10,6 +10,9 @@
         <div>Players: </div>
         <div *ngFor="let player of data.team.players">
             <div>{{player.nick}}</div>
-        </div>  
+        </div>
+        <div class="alert alert-success" *ngIf="data.team.isCaptain">
+            Invite code: {{data.team.joinCode}}
+        </div>
     </div>   
 </div>

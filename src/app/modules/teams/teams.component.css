@@ -1,5 +1,5 @@
 .header{
-    margin-top: 15px;
+    margin-top: 30px;
     position: relative;
     display: flex;
     justify-content: space-around;
@@ -22,4 +22,16 @@
     background-image: url(/assets/img/plus.png);
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.teams-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 80%;
+    margin-top: 50px;
+}
+
+.teams-box >* {
+    margin: 10px;
 }
