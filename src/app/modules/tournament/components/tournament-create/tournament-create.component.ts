@@ -21,11 +21,13 @@ export class TournamentCreateComponent implements OnInit {
   code = '';
   numberOfPlayers = 5;
   numberOfTeams = 8;
+  public date = new Date();
   form = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     game: new FormControl('', Validators.required),
-    format: new FormControl('', Validators.required)
+    format: new FormControl('', Validators.required),
+    date: new FormControl(new Date(new Date().getTime() + (24*60*60*1000)), Validators.required),
   });
 
   options = ['League of Legends', 'Rainbow 6 Siege', 'CS: GO', 'Smite', 'Starcraft 2', 'Dota 2', 'Other']
@@ -48,7 +50,8 @@ export class TournamentCreateComponent implements OnInit {
         game: this.form.get('game').value,
         format: this.form.get('format').value,
         playersInTeam: this.numberOfPlayers,
-        maxTeams: this.numberOfTeams
+        maxTeams: this.numberOfTeams,
+        date: this.form.get('date').value
       }
       this.trnService.getConfig().subscribe(config => {
         this.trnService.createTournament(config.apiURL, data).subscribe(

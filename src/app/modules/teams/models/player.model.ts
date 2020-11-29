@@ -6,6 +6,15 @@ export class Player{
 
     @deserialize
     _id?: string;
+    
+    @deserialize
+    name?: string;
+
+    @deserialize
+    surname?: string;
+
+    @deserialize
+    email?: string;
 
     constructor(nick: string) {
         this.nick = nick;

@@ -7,7 +7,7 @@ import { TournamentScoreComponent } from '../tournament-score/tournament-score.c
 @Component({
   selector: 'app-tournament-matches',
   templateUrl: './tournament-matches.component.html',
-  styleUrls: ['./tournament-matches.component.css']
+  styleUrls: ['./tournament-matches.component.scss']
 })
 export class TournamentMatchesComponent implements OnInit {
 

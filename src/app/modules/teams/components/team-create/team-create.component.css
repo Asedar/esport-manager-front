@@ -11,3 +11,20 @@
     height: auto;
     cursor: pointer;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.dialog-container {
+    min-width: 400px;
+}
+
+.dialog-button {
+    max-width: 150px;
+    min-width: 150px;
+    justify-self: center;
+    align-self: center;
+    margin-top: 10px;
+}

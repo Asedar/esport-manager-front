@@ -23,6 +23,8 @@ import { TournamentMatchComponent } from './components/tournament-details/tourna
 import { NgTournamentTreeModule } from 'ng-tournament-tree';
 import {MatDividerModule} from '@angular/material/divider';
 import { TournamentAlertComponent } from './components/tournament-details/tournament-alert/tournament-alert.component';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { TeamsModule } from '../teams/teams.module';
 
 @NgModule({
   declarations: [TournamentComponent, TournamentCardComponent, TournamentDetailsComponent, TournamentCreateComponent, TournamentJoinComponent, TournamentMatchesComponent, TournamentScoreComponent, TournamentMatchComponent, TournamentAlertComponent],
@@ -40,7 +42,10 @@ import { TournamentAlertComponent } from './components/tournament-details/tourna
     NgxSpinnerModule,
     MatTabsModule,
     NgTournamentTreeModule,
-    MatDividerModule
+    MatDividerModule,
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule,
+    TeamsModule
   ]
 })
 export class TournamentModule { }

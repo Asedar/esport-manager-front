@@ -8,11 +8,11 @@
     <form (ngSubmit)="join()" [formGroup]="form" mat-dialog-content>
         <label id="radio-group-label">Enter invite code:</label>
         <mat-form-field appearance="fill">
-            <mat-label>Enter invite code:</mat-label>
+            <mat-label>Invite code:</mat-label>
             <input matInput placeholder="Invite Code" [formControl]="form.controls['code']" required>
             <mat-error *ngIf="form.controls['code']">Every code should be exactly 8 letters long</mat-error>
-            <div *ngIf="result" class="alert alert-danger">{{errorMessage}}</div>
         </mat-form-field>
+        <div *ngIf="result" class="alert alert-danger">{{errorMessage}}</div>
         <button class="dialog-button" mat-raised-button>Ok</button>
     </form>
     

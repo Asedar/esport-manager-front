@@ -4,6 +4,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    width: 100%;
 }
 
 .btn-circle.btn-xl {
@@ -18,4 +19,30 @@
     background-image: url(/assets/img/plus.png);
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.tournaments-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.tournament-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 80%;
+}
+
+.matches-container{
+    
+}
+
+.matches {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
 }

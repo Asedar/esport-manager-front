@@ -1,3 +1,89 @@
-a {
-    color: white;
+.card-container {
+    /* color: white; */
+    margin: 10px;
+    width: 260px;
+    min-height: 300px;
+    border: 8px solid #466582;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.card-container:hover {
+    transform: scale(1.05);
+}
+
+.tournament-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.tournament-info h4 {
+    word-wrap: break-word;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.game {
+    width: 100%;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.game >* {
+    width: 100%;
+    height: 100%;
+    justify-self: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.info {
+    border-top: 4px solid #466582;
+    padding: 10px;
+}
+
+.info >* {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info div strong {
+    width: 40%;
+}
+
+.info div div {
+    width: 60%;
+}
+
+.cs {
+    background-image: url(/assets/img/cs.png);
+}
+
+.lol {
+    background-image: url(/assets/img/lol.png);
+}
+
+.smite {
+    background-image: url(/assets/img/smite.png);
+}
+
+.r6s {
+    background-image: url(/assets/img/r6s.png);
+}
+
+.starcraft {
+    background-image: url(/assets/img/starcraft.jpg);
+}
+
+.dota {
+    background-image: url(/assets/img/dota.png);
+}
+
+.other {
+    background-image: url(/assets/img/game.png);
 }

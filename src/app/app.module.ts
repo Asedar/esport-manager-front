@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { StartingPageModule } from './modules/starting-page/starting-page.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -22,7 +21,6 @@ import { TournamentModule } from './modules/tournament/tournament.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DashboardModule,
     StartingPageModule,
     NavbarModule,
     RandomizerModule,

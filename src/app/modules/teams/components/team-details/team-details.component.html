@@ -1,18 +1,20 @@
 <div class="dialog-container">
 
     <div class="header">
-        <h1 class="colored">{{data.team.name}}</h1>
+        <h1 class="colored name">{{data.team.name}}</h1>
         <div class="close" (click)="exit()"></div>
     </div>
       
-    <div mat-dialog-content>
-        <div>Captain: {{data.team.captain.nick}}</div>
-        <div>Players: </div>
-        <div *ngFor="let player of data.team.players">
-            <div>{{player.nick}}</div>
-        </div>
+    <div class="content" mat-dialog-content>
+        <div class="line"><strong>Captain:</strong> {{data.team.captain.nick}}</div>
+        <div><strong>Players:</strong> </div>
+        <ul class="players">
+            <div *ngFor="let player of data.team.players">
+                <li>{{player.nick}}</li>
+            </div>
+        </ul>
         <div class="alert alert-success" *ngIf="data.team.isCaptain">
-            Invite code: {{data.team.joinCode}}
+            <strong>Invite code: </strong>{{data.team.joinCode}}
         </div>
     </div>   
 </div>

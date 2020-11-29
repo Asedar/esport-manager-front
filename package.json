@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-material-components/datetime-picker": "^4.0.5",
     "@angular/animations": "^9.1.4",
     "@angular/cdk": "^9.1.4",
     "@angular/common": "^9.1.4",
@@ -29,6 +30,7 @@
     "jwt-decode": "^3.0.0",
     "lodash": "^4.17.20",
     "ng-number-picker": "^1.1.9",
+    "ng-pick-datetime": "^7.0.0",
     "ng-tournament-tree": "^2.0.2",
     "ngx-spinner": "^10.0.1",
     "rxjs": "~6.5.4",

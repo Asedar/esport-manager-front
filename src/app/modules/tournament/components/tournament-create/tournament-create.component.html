@@ -6,12 +6,14 @@
     </div>
     
     <form (ngSubmit)="create()" *ngIf="!success" [formGroup]="form" mat-dialog-content>
-        <mat-form-field appearance="fill">
+      <label>Tournament name:</label>
+        <mat-form-field appearance="fill" [style.fontSize.px]=14>
             <mat-label>Name:</mat-label>
-            <input matInput placeholder="Name" [formControl]="form.controls['name']" required>
+            <input matInput placeholder="Name" [formControl]="form.controls['name']" maxlength="50" required>
             <mat-error *ngIf="form.controls['name']">Field required</mat-error>
         </mat-form-field>
-        <mat-form-field appearance="fill">
+        <label>Description:</label>
+        <mat-form-field appearance="fill" [style.fontSize.px]=14>
             <mat-label>Description:</mat-label>
             <textarea matInput
               cdkTextareaAutosize
@@ -23,13 +25,20 @@
             </textarea>
             <mat-error *ngIf="form.controls['description']">Field required</mat-error>
         </mat-form-field>
-        <mat-form-field appearance="outline" class="position-select">
+        <label>Game:</label>
+        <mat-form-field class="game" class="position-select" [style.fontSize.px]=14>
             <mat-select [formControl]="form.controls['game']">
               <mat-option *ngFor="let option of options" [value]="option">
                 {{option}}
               </mat-option>
             </mat-select>
         </mat-form-field>
+        <div class="input-wrapper">
+          <label>Date: </label>
+          <input [formControl]="form.controls['date']"
+                 [owlDateTimeTrigger]="dtPicker2" [owlDateTime]="dtPicker2" [min]="date">
+          <owl-date-time #dtPicker2></owl-date-time>
+        </div>
         <label id="number-picker-label">Number of players in team:</label>
         <div class="dialog-picker">
             <ng-number-picker aria-labelledby="number-picker-label"
@@ -64,9 +73,9 @@
         </div>
         <label id="radio-group-label">Choose format:</label>
         <mat-radio-group class="dialog-radio" aria-labelledby="radio-group-label" [formControl]="form.controls['format']">
-            <mat-radio-button value="single-elimination" [checked]="true">Single elimination bracket</mat-radio-button>
-            <mat-radio-button value="robin">Round Robin</mat-radio-button>
-          </mat-radio-group>
+          <mat-radio-button value="single-elimination">Single elimination bracket</mat-radio-button>
+          <mat-radio-button value="robin">Round Robin</mat-radio-button>
+        </mat-radio-group>
         <button *ngIf="!success" class="dialog-button" mat-raised-button>Create</button>
     </form>
     <div *ngIf="fail" class="alert alert-danger">Something went wrong, try again later</div>

@@ -24,11 +24,8 @@ export class TournamentMatchComponent implements OnInit {
   }
   @Input() match;
 
-  
-
   setScore() {
-    console.log(this.match.admin)
-    if((this.match.team1.captain && this.match.team1.captain == this.storageService.getUserID()) || (this.match.team2.captain && this.match.team2.captain == this.storageService.getUserID()) || this.match.admin._id == this.storageService.getUserID()) {
+    if((this.match.team1.name != '-' &&this.match.team2.name != '-') && ((this.match.team1.captain == this.storageService.getUserID()) || (this.match.team2.captain == this.storageService.getUserID()) || this.match.admin._id == this.storageService.getUserID())) {
       
       const dialogRef = this.dialog.open(TournamentScoreComponent, { disableClose: true, data: {tournamentID: this.match.tournamentID, id: this.match.id, type: 'bracket', match:{team1: this.match.team1, team2: this.match.team2}} });
 
@@ -36,10 +33,13 @@ export class TournamentMatchComponent implements OnInit {
         if(result) {
           if(result.winner == 1) {
             this.t1Score = 1;
+            this.t2Score = 0
           }
           if(result.winner == 2) {
+            this.t1Score = 0
             this.t2Score = 1;
           }
+          
         }
       });
     }

@@ -26,6 +26,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MatInputModule,
     MatButtonModule,
     NgxSpinnerModule
+  ],
+  exports: [
+    TeamCardComponent,
+    TeamDetailsComponent
   ]
 })
 export class TeamsModule { }

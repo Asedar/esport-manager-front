@@ -1,4 +1,5 @@
 import { deserialize, deserializeAs} from 'cerialize';
+import { Player } from '../../teams/models/player.model';
 import { Team } from '../../teams/models/team.model';
 import { Match } from './match.model';
 
@@ -11,7 +12,7 @@ export class Tournament{
     name: string;
 
     @deserialize
-    startDate: Date;
+    date: Date;
 
     @deserialize
     status: string;
@@ -25,8 +26,8 @@ export class Tournament{
     @deserialize
     format: string;
 
-    @deserialize
-    admin?: string;
+    @deserializeAs(Player)
+    admin?: Player;
     
     @deserializeAs(Team)
     teams?: Team[]

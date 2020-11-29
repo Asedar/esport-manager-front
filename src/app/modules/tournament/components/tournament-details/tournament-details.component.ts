@@ -7,6 +7,9 @@ import * as Duel from 'duel'
 import { NgttRound, NgttTournament } from 'ng-tournament-tree';
 import { MatDialog } from '@angular/material/dialog';
 import { TournamentAlertComponent } from './tournament-alert/tournament-alert.component';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { Team } from 'src/app/modules/teams/models/team.model';
+import { TeamDetailsComponent } from 'src/app/modules/teams/components/team-details/team-details.component';
 
 
 @Component({
@@ -16,23 +19,35 @@ import { TournamentAlertComponent } from './tournament-alert/tournament-alert.co
 })
 export class TournamentDetailsComponent implements OnInit {
 
-  constructor(private trnService: TournamentService, private route: ActivatedRoute, private router: Router, public dialog: MatDialog) { }
+  constructor(private trnService: TournamentService, private route: ActivatedRoute, private router: Router, public dialog: MatDialog, private storageService: LocalStorageService) { }
   
   ngOnInit(): void {
     this.loadTournaments();
   }
 
+  status = '';
   tournament: Tournament;
   myTournamentData: NgttTournament = {rounds: []};
   duel;
+  playerId = this.storageService.getUserID();
 
   loadTournaments() {
     this.trnService.getConfig().subscribe(config => {
       this.trnService.getSingleTournament(config.apiURL, this.route.snapshot.paramMap.get("id")).subscribe(data => {
         if(data.data) {
           this.tournament = Deserialize(data.data, Tournament);
+          if(this.tournament.status == 'created') {
+            this.status = 'Open'
+          }
+      
+          if(this.tournament.status == 'in-progress') {
+            this.status = 'In progress'
+          }
+      
+          if(this.tournament.status == 'end') {
+            this.status = 'Finished'
+          }
           if(this.tournament.format == 'single-elimination' && this.tournament.status != 'created') {
-            console.log(this.tournament.teams)
             this.parseBracket();
           }
         }
@@ -81,5 +96,9 @@ export class TournamentDetailsComponent implements OnInit {
         this.loadTournaments();
       }
     });
+  }
+
+  teamDetails(team: Team) {
+    const dialogRef = this.dialog.open(TeamDetailsComponent, { disableClose: true, data: {team: team} });
   }
 }

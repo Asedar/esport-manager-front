@@ -6,7 +6,7 @@
     </div>
     
     <form (ngSubmit)="submit()" [formGroup]="form" mat-dialog-content>
-        <mat-radio-group class="radio-group" [formControl]="form.get('winner')">
+        <mat-radio-group class="dialog-radio" [formControl]="form.get('winner')">
             <mat-radio-button value="1">{{data.match.team1.name}}</mat-radio-button>
             <mat-radio-button value="2">{{data.match.team2.name}}</mat-radio-button>
         </mat-radio-group>

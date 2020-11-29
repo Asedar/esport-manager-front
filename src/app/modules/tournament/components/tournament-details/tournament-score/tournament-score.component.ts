@@ -29,7 +29,10 @@ export class TournamentScoreComponent implements OnInit {
 
   result = false;
 
+  returnValue;
+
   submit() {
+    this.form.markAllAsTouched();
     if(this.form.valid) {
       this.tournamentService.getConfig().subscribe(config => {
         if(this.data.type == 'robin') {
@@ -46,13 +49,15 @@ export class TournamentScoreComponent implements OnInit {
           let winner = this.form.get('winner').value;
           if(winner == 1) {
             winner = [1,0];
+            this.returnValue = 1;
           }
           else if(winner == 2) {
             winner = [0,1];
+            this.returnValue = 2;
           }
           this.tournamentService.setBracketScore(config.apiURL, this.data.tournamentID, this.data.id, winner).subscribe(
             res => {
-              this.dialogRef.close({winner: winner});
+              this.dialogRef.close({winner: this.returnValue});
             },
             error => {
               this.dialogRef.close();

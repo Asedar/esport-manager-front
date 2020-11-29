@@ -1,8 +1,15 @@
 .header {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 20px;
 }
 
+.name {
+    overflow: auto;
+    word-break: normal;
+    max-width: 400px;
+    margin-right: 10px;
+}
 .close {
     background-image: url(/assets/img/close.png);
     background-size: contain;
@@ -10,4 +17,22 @@
     width: 50px;
     height: auto;
     cursor: pointer;
+}
+
+.line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.players {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content {
+    font-size: 1.5rem;
+    min-width: 300px;
+}
+.content >* {
+    margin: 5px;
 }

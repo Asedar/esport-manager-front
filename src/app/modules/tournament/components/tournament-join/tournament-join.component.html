@@ -20,6 +20,7 @@
                 {{option.name}}
               </mat-option>
             </mat-select>
+            <mat-error *ngIf="form.controls['team']">Required</mat-error>
         </mat-form-field>
         <button class="dialog-button" mat-raised-button>Ok</button>
     </form>

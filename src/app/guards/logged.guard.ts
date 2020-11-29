@@ -14,7 +14,7 @@ export class LoggedGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if(this.authService.isUserLogedIn()) {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/tournaments']);
         return false;
       }
       else {

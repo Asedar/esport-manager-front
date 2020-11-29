@@ -1,4 +1,5 @@
 @import '~ng-tournament-tree/styles/ngtt-single-elimination-styles';
+@import "~ng-pick-datetime/assets/style/picker.min.css";
 
 html, body {
 	height: 100%;
@@ -54,7 +55,6 @@ a:focus, button:focus {
 	background-color: rgba(0,0,0,0);
 }
 
-.ngtt-se__bracket-wrapper{
+.ngtt-se__bracket-wrapper{	
 	max-width: 100%;
-	overflow: auto;
 }

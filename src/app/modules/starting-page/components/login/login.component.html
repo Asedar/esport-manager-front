@@ -31,15 +31,9 @@
                         <div class="alert alert-danger" *ngIf="loginError">
                             {{errorMessage}}
                         </div>
-                        <div class="d-flex justify-content-around">
-                            <div>
-                                <!-- Remember me -->
-                                <mat-checkbox [formControl]="form.controls['rememberMe']">Remember me</mat-checkbox>
-                            </div>
-                            <div>
-                                <!-- Forgot password -->
-                                <a href="">Forgot password?</a>
-                            </div>
+                        <div>
+                            <!-- Remember me -->
+                            <mat-checkbox [formControl]="form.controls['rememberMe']">Remember me</mat-checkbox>
                         </div>
                 
                         <!-- Sign in button -->

@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
             response => {
               this.loginError = false;
               this.spinner.hide();
-              this.router.navigate(['dashboard']);
+              this.router.navigate(['tournaments']);
             },
             error => {
               this.loginError = true;
