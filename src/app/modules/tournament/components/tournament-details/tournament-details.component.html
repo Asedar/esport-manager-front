@@ -19,6 +19,9 @@
         <div class="buttons" *ngIf="playerId === tournament.admin._id">
             <button *ngIf="tournament.teams.length >= 4 && tournament.status == 'created'" (click)="createBracket()" class="colored-btn" mat-raised-button>Create bracket</button>
             <button *ngIf="tournament.status != 'end'" (click)="endTournament()" class="colored-btn" mat-raised-button>End tournament</button>
+            <div class="invite">
+                <strong>Invite code: </strong> {{tournament.joinCode}}
+            </div>
         </div>
 
         <div class="admin" *ngIf="playerId !== tournament.admin._id">

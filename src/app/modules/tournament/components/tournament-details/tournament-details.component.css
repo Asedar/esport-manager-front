@@ -76,10 +76,6 @@ mat-tab-group {
     width: 80%;
 }
 
-.tab-container >* {
-    
-}
-
 .description-content {
     width: 100%;
     text-align: justify;

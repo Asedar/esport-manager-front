@@ -6,6 +6,10 @@
     flex-wrap: wrap;
 }
 
+.matches-container >*:hover {
+    transform: scale(1.05);
+}
+
 .matches-container >* {
     margin: 10px;
 }

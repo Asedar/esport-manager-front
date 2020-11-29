@@ -1,4 +1,4 @@
-import { deserialize, deserializeAs} from 'cerialize';
+import { Deserialize, deserialize, deserializeAs} from 'cerialize';
 import { Player } from '../../teams/models/player.model';
 import { Team } from '../../teams/models/team.model';
 import { Match } from './match.model';
@@ -46,5 +46,8 @@ export class Tournament{
 
     @deserialize
     bracket?: any;
+
+    @deserialize
+    joinCode?: string;
 
 }
