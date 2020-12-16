@@ -25,6 +25,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import { TournamentAlertComponent } from './components/tournament-details/tournament-alert/tournament-alert.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { TeamsModule } from '../teams/teams.module';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [TournamentComponent, TournamentCardComponent, TournamentDetailsComponent, TournamentCreateComponent, TournamentJoinComponent, TournamentMatchesComponent, TournamentScoreComponent, TournamentMatchComponent, TournamentAlertComponent],
@@ -45,7 +46,8 @@ import { TeamsModule } from '../teams/teams.module';
     MatDividerModule,
     OwlDateTimeModule, 
     OwlNativeDateTimeModule,
-    TeamsModule
+    TeamsModule,
+    MatSortModule
   ]
 })
 export class TournamentModule { }

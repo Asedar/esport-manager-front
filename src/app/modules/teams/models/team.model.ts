@@ -4,6 +4,9 @@ import { deserialize, deserializeAs } from 'cerialize';
 export class Team{
 
     @deserialize
+    _id: string;
+
+    @deserialize
     name: string;
 
     @deserializeAs(Player)
@@ -16,5 +19,9 @@ export class Team{
 
     @deserialize
     joinCode?: string
+
+    wins?: number;
+    loses?: number;
+    winratio?: number;
 
 }

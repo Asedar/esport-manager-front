@@ -10,6 +10,7 @@ import { TournamentAlertComponent } from './tournament-alert/tournament-alert.co
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Team } from 'src/app/modules/teams/models/team.model';
 import { TeamDetailsComponent } from 'src/app/modules/teams/components/team-details/team-details.component';
+import { Sort } from '@angular/material/sort';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class TournamentDetailsComponent implements OnInit {
   myTournamentData: NgttTournament = {rounds: []};
   duel;
   playerId = this.storageService.getUserID();
+  teamScores = [];
 
   loadTournaments() {
     this.trnService.getConfig().subscribe(config => {
@@ -42,10 +44,18 @@ export class TournamentDetailsComponent implements OnInit {
       
           if(this.tournament.status == 'in-progress') {
             this.status = 'In progress'
+            if(this.tournament.format == 'robin' ){
+              this.countScore();
+              this.teamScores = this.tournament.teams.slice();
+            }
           }
       
           if(this.tournament.status == 'end') {
             this.status = 'Finished'
+            if(this.tournament.format == 'robin' ){
+              this.countScore();
+              this.teamScores = this.tournament.teams.slice();
+            }
           }
           if(this.tournament.format == 'single-elimination' && this.tournament.status != 'created') {
             this.parseBracket();
@@ -100,5 +110,57 @@ export class TournamentDetailsComponent implements OnInit {
 
   teamDetails(team: Team) {
     const dialogRef = this.dialog.open(TeamDetailsComponent, { disableClose: true, data: {team: team} });
+  }
+
+  countScore() {
+    this.tournament.teams.forEach(team => {
+      let wins = 0;
+      let loses = 0;
+      this.tournament.matches.forEach(match => {
+        if(match.team1._id == team._id) {
+          if(match.winner == 1) {
+            wins++;
+          }
+          if(match.winner == 2) {
+            loses++;
+          }
+        }
+        else if(match.team2._id == team._id) {
+          if(match.winner == 2) {
+            wins++;
+          }
+          if(match.winner == 1) {
+            loses++;
+          }
+        }
+      });
+      team.wins = wins;
+      team.loses = loses;
+      team.winratio = Math.floor(wins/(wins+loses) * 100);
+    });
+    console.log(this.tournament.teams);
+  }
+
+  sortData(sort: Sort) {
+    const data = this.tournament.teams.slice();
+    if (!sort.active || sort.direction === '') {
+      this.teamScores = data;
+      return;
+    }
+
+    this.teamScores = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'name': return this.compare(a.name, b.name, isAsc);
+        case 'wins': return this.compare(a.wins, b.wins, isAsc);
+        case 'loses': return this.compare(a.loses, b.loses, isAsc);
+        case 'winratio': return this.compare(a.winratio, b.winratio, isAsc);
+        default: return 0;
+      }
+    });
+  }
+
+  compare(a: number | string, b: number | string, isAsc: boolean) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 }

@@ -13,6 +13,7 @@ import { NavbarModule } from './modules/navbar/navbar.module';
 import { RandomizerModule } from './modules/randomizer/randomizer.module';
 import { TeamsModule } from './modules/teams/teams.module';
 import { TournamentModule } from './modules/tournament/tournament.module';
+import { AccountModule } from './modules/account/account.module';
 
 @NgModule({
   declarations: [
@@ -26,10 +27,12 @@ import { TournamentModule } from './modules/tournament/tournament.module';
     RandomizerModule,
     TeamsModule,
     TournamentModule,
+    AccountModule,
     BrowserAnimationsModule,
     ErrorPagesModule,
     HttpClientModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    
   ],
   providers: [
     { 

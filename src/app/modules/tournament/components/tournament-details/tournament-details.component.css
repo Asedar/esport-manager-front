@@ -99,3 +99,40 @@ mat-tab-group {
 .teams-content >* {
     margin: 10px;
 }
+
+.mat-sort-header-container {
+    align-items: center;
+}
+
+.robin-container {
+   flex-direction: row;
+   flex-wrap: nowrap !important;
+   
+}
+
+.scores {
+    margin-top: 10px;
+    width: 20%;
+}
+
+app-tournament-matches {
+    width: 75%;
+}
+
+td {
+    border-top: 4px solid white;
+    padding: 5px;
+    text-align: center;
+}
+
+tr {
+    text-align: center;
+}
+
+th {
+    text-align: center;
+}
+
+.number {
+    width: 50px;
+}

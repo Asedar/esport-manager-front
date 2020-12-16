@@ -58,7 +58,24 @@
             </div>
         </mat-tab>
         <mat-tab label="Matches">
-            <div class="tab-container" *ngIf="tournament.format === 'robin'">
+            <div class="tab-container robin-container" *ngIf="tournament.format === 'robin'">
+                <table class="scores" matSort (matSortChange)="sortData($event)">
+                    <tr>
+                        <th class="number">No.   </th>
+                      <th mat-sort-header="name">Team</th>
+                      <th mat-sort-header="wins">Wins</th>
+                      <th mat-sort-header="loses">Loses</th>
+                      <th mat-sort-header="winratio">Win ratio(%)</th>
+                    </tr>
+                  
+                    <tr *ngFor="let team of teamScores; let i = index">
+                        <td>{{i + 1}}.   </td>
+                      <td class="colored">{{team.name}}</td>
+                      <td>{{team.wins}}</td>
+                      <td>{{team.loses}}</td>
+                      <td>{{team.winratio}}</td>
+                    </tr>
+                  </table>
                 <app-tournament-matches [matches]="tournament.matches"></app-tournament-matches>
             </div>
             
