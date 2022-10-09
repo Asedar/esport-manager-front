@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<div class="tournaments-container">
+    <div class="header">
+        <h1 class="colored title">Tournaments</h1>
+        <button (click)="joinTournament()" class="colored-btn" mat-raised-button>Join tournament</button>
+    </div>
+    <div class="tournament-box" *ngIf="tournamentsAdmin">
+        <h3 class="colored title">Tournaments you created:</h3>
+        <div class="matches-container">
+            <div class="matches">
+                <div *ngFor="let tournament of tournamentsAdmin">
+                    <app-tournament-card [tournament]="tournament"></app-tournament-card>
+                </div> 
+            </div> 
+        </div>
+    </div>
+    <div class="tournament-box" *ngIf="tournamentsPlayer">
+        <h3 class="colored title">Tournaments you participate in:</h3>
+        <div class="matches-container">
+            <div class="matches">
+                <div *ngFor="let tournament of tournamentsPlayer">
+                    <app-tournament-card [tournament]="tournament"></app-tournament-card>
+                </div> 
+            </div> 
+        </div>
+    </div>
+    <button (click)="createTournament()" type="button" class="btn btn-default colored-btn btn-circle btn-xl" ></button>
+</div>
+<ngx-spinner></ngx-spinner>

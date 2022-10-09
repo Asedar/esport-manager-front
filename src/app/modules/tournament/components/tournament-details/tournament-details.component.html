@@ -1,0 +1,97 @@
+<app-navbar></app-navbar>
+<div class="tournament-container" *ngIf="tournament">
+    <div class="header">       
+        <div>
+            <h1 class="colored title">{{tournament.name}}</h1>
+            <div>
+                <strong>Game: </strong>{{tournament.game}}
+            </div>
+            <div>
+                <strong>Format: </strong>{{tournament.format == 'robin' ? 'Round Robin' : 'Single elimination bracket'}}
+            </div>
+            <div>
+                <strong>Status: </strong>{{status}}
+            </div>
+            <div>
+                <strong>Start date: </strong>{{tournament.date | date:'dd.MM.yyyy hh:mm'}}
+            </div>
+        </div>
+        <div class="buttons" *ngIf="playerId === tournament.admin._id">
+            <button *ngIf="tournament.teams.length >= 4 && tournament.status == 'created'" (click)="createBracket()" class="colored-btn" mat-raised-button>Create bracket</button>
+            <button *ngIf="tournament.status != 'end'" (click)="endTournament()" class="colored-btn" mat-raised-button>End tournament</button>
+            <div class="invite">
+                <strong>Invite code: </strong> {{tournament.joinCode}}
+            </div>
+        </div>
+
+        <div class="admin" *ngIf="playerId !== tournament.admin._id">
+            <h4>Admin:</h4>
+            <div class="admin-field">
+                <strong>Nick: </strong>{{tournament.admin.nick}}
+            </div>
+            <div class="admin-field">
+                <strong>E-mail: </strong>{{tournament.admin.email}}
+            </div>
+        </div>
+        
+    </div>
+    
+    <mat-tab-group>
+        <mat-tab class="tab-color" label="Description"> 
+            <div class="tab-container">
+                <div class="description-content" [innerHTML]="tournament.description">
+                    {{tournament.description}}
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Teams">
+            <div class="tab-container">
+                <div class="teams-content">
+                    <h3 class="admin-field">
+                        <strong>Registered teams: </strong> {{tournament.teams.length}}  
+                    </h3>
+                    <div class="break"></div>
+                    <div *ngFor="let team of tournament.teams">
+                        <app-team-card (click)="teamDetails(team)" [team]="team"></app-team-card>
+                    </div>  
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Matches">
+            <div class="tab-container robin-container" *ngIf="tournament.format === 'robin'">
+                <table class="scores" matSort (matSortChange)="sortData($event)">
+                    <tr>
+                        <th class="number">No.   </th>
+                      <th mat-sort-header="name">Team</th>
+                      <th mat-sort-header="wins">Wins</th>
+                      <th mat-sort-header="loses">Loses</th>
+                      <th mat-sort-header="winratio">Win ratio(%)</th>
+                    </tr>
+                  
+                    <tr *ngFor="let team of teamScores; let i = index">
+                        <td>{{i + 1}}.   </td>
+                      <td class="colored">{{team.name}}</td>
+                      <td>{{team.wins}}</td>
+                      <td>{{team.loses}}</td>
+                      <td>{{team.winratio}}</td>
+                    </tr>
+                  </table>
+                <app-tournament-matches [matches]="tournament.matches"></app-tournament-matches>
+            </div>
+            
+            <div *ngIf="tournament.format === 'single-elimination' && tournament.status !='created'">
+                <ngtt-single-elimination-tree 
+                    [tournament]="myTournamentData" 
+                    [matchTemplate]="myMatchTemplate">
+                </ngtt-single-elimination-tree>
+                
+                <ng-template #myMatchTemplate let-match>
+                    <app-tournament-match [match]="match"></app-tournament-match>
+                </ng-template>
+            </div> 
+        </mat-tab>
+    </mat-tab-group>
+    
+    
+
+</div>

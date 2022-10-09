@@ -1,0 +1,138 @@
+div {
+    color: white;
+}
+
+app-tournament-match {
+    width: 100%;
+}
+
+::ng-deep.mat-tab-label {
+    color: white !important;
+}
+
+.tournament-container {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tournament-container >* {
+    margin: 30px;
+}
+
+mat-tab-group {
+    width: 80%;
+}
+
+.header{
+    padding: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.header strong {
+    margin-right: 15px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons >*{
+    margin: 5px;
+    width: 150px;
+}
+
+.admin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.admin-field {
+    min-width: 200px;
+    display: flex;
+}
+
+.admin-field strong, .admin-field h3{
+    margin-right: 15px;
+}
+
+.tab-container  {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tab-container app-tournament-matches {
+    width: 80%;
+}
+
+.description-content {
+    width: 100%;
+    text-align: justify;
+    text-justify: auto;
+    line-height: 1.8rem;
+    padding: 10px;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+.teams-content {
+    
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.teams-content >* {
+    margin: 10px;
+}
+
+.mat-sort-header-container {
+    align-items: center;
+}
+
+.robin-container {
+   flex-direction: row;
+   flex-wrap: nowrap !important;
+   
+}
+
+.scores {
+    margin-top: 10px;
+    width: 20%;
+}
+
+app-tournament-matches {
+    width: 75%;
+}
+
+td {
+    border-top: 4px solid white;
+    padding: 5px;
+    text-align: center;
+}
+
+tr {
+    text-align: center;
+}
+
+th {
+    text-align: center;
+}
+
+.number {
+    width: 50px;
+}

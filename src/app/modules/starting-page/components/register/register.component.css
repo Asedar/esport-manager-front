@@ -1,0 +1,61 @@
+.form-container {
+    height: 100%;
+    overflow: hidden;
+}
+
+.form-item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.card {
+    min-width: 400px;
+    background: repeating-linear-gradient(
+        20deg,
+        #ffffff,
+        #ffffff 2px,
+        #F5F5F5 3px,
+        #F5F5F5 4px
+    );
+}
+
+mat-form-field {
+    margin-bottom: 15px;
+}
+
+button {
+    background: #fc0254;
+    color: white;
+}
+
+.register-message {
+    color: white;
+    width: 100%;
+    min-height: 50px;
+    height: auto;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.register-message div {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 1px;
+}
+.register-error {
+    background-color: rgb(235, 22, 22);
+}
+
+.register-success {
+    background-color: rgba(19, 182, 27, 0.7);
+}

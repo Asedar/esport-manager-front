@@ -1,0 +1,18 @@
+<div class="matches-container">
+    <div *ngFor="let match of matches; let i = index" (click)="setScore(match)">
+        <div class="match">
+            <h4 class="colored">Match no. {{i + 1}}</h4>
+            <div class="match-container">
+                <div class="ngtt__team-wrapper">
+                    <h6 class="ngtt__team-title">{{match.team1.name}}</h6>
+                    <div class="ngtt__team-score">{{match.winner == 1 ? 1 : 0}}</div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="ngtt__team-wrapper">
+                    <h6 class="ngtt__team-title">{{match.team2.name}}</h6>
+                    <div class="ngtt__team-score">{{match.winner == 2 ? 1 : 0}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

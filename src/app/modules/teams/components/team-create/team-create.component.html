@@ -1,0 +1,21 @@
+<div class="dialog-container">
+
+    <div class="header">
+      <h1 class="colored">Create new team</h1>
+      <div class="close" (click)="exit()"></div>
+    </div>
+    
+    <form (ngSubmit)="create()" *ngIf="!success" [formGroup]="form" mat-dialog-content>
+        <label id="radio-group-label">Enter team name:</label>
+        <mat-form-field appearance="fill">
+            <mat-label>Name:</mat-label>
+            <input matInput placeholder="Name" [formControl]="form.controls['name']" required>
+            <mat-error *ngIf="form.controls['name']">Field required</mat-error>
+        </mat-form-field>       
+        <button *ngIf="!success" class="dialog-button" mat-raised-button>Create new team</button>
+    </form>
+    <div *ngIf="taken" class="alert alert-danger">Team with this name already exists</div>
+    <div *ngIf="success" class="alert alert-success">Invite code: {{code}}</div>
+    <button *ngIf="success" class="dialog-button" (click)="exit()" mat-raised-button>Ok</button>
+    
+</div>

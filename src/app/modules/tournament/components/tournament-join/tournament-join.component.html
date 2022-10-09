@@ -1,0 +1,28 @@
+<div class="dialog-container">
+
+    <div class="header">
+      <h1 class="colored">Join tournament</h1>
+      <div class="close" (click)="exit()"></div>
+    </div>
+    
+    <form (ngSubmit)="join()" [formGroup]="form" mat-dialog-content>
+        <label id="radio-group-label">Enter invite code:</label>
+        <mat-form-field appearance="fill">
+            <mat-label>Invite code:</mat-label>
+            <input matInput placeholder="Invite Code" [formControl]="form.controls['code']" required>
+            <mat-error *ngIf="form.controls['code']">Every code should be exactly 8 letters long</mat-error>
+            <div *ngIf="result" class="alert alert-danger">{{errorMessage}}</div>
+        </mat-form-field>
+        <label id="select-label">Choose team:</label>
+        <mat-form-field appearance="outline" class="position-select">
+            <mat-select [formControl]="form.controls['team']">
+              <mat-option *ngFor="let option of options" [value]="option._id">
+                {{option.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls['team']">Required</mat-error>
+        </mat-form-field>
+        <button class="dialog-button" mat-raised-button>Ok</button>
+    </form>
+    
+</div>

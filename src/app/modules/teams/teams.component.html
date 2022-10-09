@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+<div class="teams-container">
+    <div class="header">
+        <h1 class="colored title">My teams</h1>
+        <div class="buttons">
+            <button class="colored-btn" (click)="joinTeam()" mat-raised-button>Join team</button>
+        </div>
+        
+    </div>
+    <div class="container-fluid teams-box">
+        <div class="team" *ngFor="let team of teams">
+            <app-team-card (click)="teamDetails(team)" [team]="team"></app-team-card>
+        </div>
+    </div>
+    <button  type="button" class="btn btn-default colored-btn btn-circle btn-xl" (click)="createTeam()" ></button>
+</div>
+<ngx-spinner></ngx-spinner>

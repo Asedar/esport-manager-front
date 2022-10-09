@@ -1,41 +1,46 @@
-import { LandingPageModule } from './main/landing-page/landing-page.module';
+import { ErrorPagesModule } from './modules/error-pages/error-pages.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MatCardModule} from '@angular/material/card';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
-
-import { LoginComponent } from './main/login/login.component';
-import { RegisterComponent } from './main/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { StartingPageModule } from './modules/starting-page/starting-page.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { NavbarModule } from './modules/navbar/navbar.module';
+import { RandomizerModule } from './modules/randomizer/randomizer.module';
+import { TeamsModule } from './modules/teams/teams.module';
+import { TournamentModule } from './modules/tournament/tournament.module';
+import { AccountModule } from './modules/account/account.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LandingPageModule,
+    StartingPageModule,
+    NavbarModule,
+    RandomizerModule,
+    TeamsModule,
+    TournamentModule,
+    AccountModule,
     BrowserAnimationsModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatButtonModule,
-    MatInputModule,
-    MatIconModule,
-    MatFormFieldModule,
-    ReactiveFormsModule
+    ErrorPagesModule,
+    HttpClientModule,
+    NgxSpinnerModule,
+    
   ],
-  providers: [],
+  providers: [
+    { 
+      provide: HTTP_INTERCEPTORS, 
+      useClass: AuthInterceptor, 
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

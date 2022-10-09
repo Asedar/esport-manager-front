@@ -1,0 +1,64 @@
+<div class="form-container">
+    <app-landing-navbar></app-landing-navbar>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form" class=form-item>
+        <div class="container">
+            <div class="row justify-content-center">
+                <mat-card class= "card">
+                    <mat-card-title class="text-center">
+                        <strong>Create new account</strong>
+                    </mat-card-title>
+                
+                    <mat-card-content class="d-flex flex-column fields">
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Nick</mat-label>
+                            <input matInput placeholder="Nick" [formControl]="form.controls['nick']" required>
+                            <mat-error *ngIf="form.controls['nick'].invalid">You must enter a value</mat-error>
+                        </mat-form-field>
+                
+                        <mat-form-field appearance="fill">
+                            <mat-label>Name</mat-label>
+                            <input matInput placeholder="Name" [formControl]="form.controls['name']" required>
+                            <mat-error *ngIf="form.controls['name'].invalid">You must enter a value</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Surname</mat-label>
+                            <input matInput placeholder="Surname" [formControl]="form.controls['surname']" required>
+                            <mat-error *ngIf="form.controls['surname'].invalid">You must enter a value</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>E-mail</mat-label>
+                            <input matInput placeholder="E-mail" [formControl]="form.controls['email']" required>
+                            <mat-error *ngIf="form.controls['email'].invalid">{{getEmailErrorMessage()}}</mat-error>
+                        </mat-form-field>
+                
+                        <mat-form-field appearance="fill">
+                            <mat-label>Password</mat-label>
+                            <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" minlength="6" maxlength="32" [formControl]="form.controls['password']" required>
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="form.controls['password'].invalid">{{getPasswordErrorMessage()}}</mat-error>
+                        </mat-form-field>
+
+                        <div class="alert alert-danger" *ngIf="registerError">
+                            <div *ngFor="let message of errorMessages">
+                                {{message}}
+                            </div>
+                        </div>
+                        <div class="register-message register-success" *ngIf="registerSuccess">
+                            Success! You can now log in.
+                        </div>
+                                
+                        <button mat-raised-button>Register</button>
+                        
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>     
+    </form>
+    
+</div>
+<ngx-spinner></ngx-spinner>

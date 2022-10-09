@@ -1,0 +1,29 @@
+<div [routerLink]="['/tournaments', tournament._id]" class="card-container">
+
+    <div class="tournament-info">
+        <h4 class="colored"><strong>{{tournament.name}}</strong></h4>
+        <div class="game" [ngSwitch]="tournament.game">
+            <div class="cs" *ngSwitchCase="'CS: GO'"></div>
+            <div class="lol" *ngSwitchCase="'League of Legends'"></div>
+            <div class="r6s" *ngSwitchCase="'Rainbow 6 Siege'"></div>
+            <div class="smite" *ngSwitchCase="'Smite'"></div>
+            <div class="starcraft" *ngSwitchCase="'Starcraft 2'"></div>
+            <div class="dota" *ngSwitchCase="'Dota 2'"></div>
+            <div class="other" *ngSwitchCase="'Other'"></div>
+        </div>
+        <div class="info">
+            <div>
+                <strong>Format:</strong> <div>{{tournament.format == 'robin' ? 'Round Robin' : 'SE bracket'}}</div>
+            </div>
+            <div>
+                <strong>Date:</strong> <div>{{tournament.date | date:'dd.MM.yyyy hh:mm'}}</div>
+            </div>
+            <div>
+                <strong>Status:</strong> <div>{{status}}</div>
+            </div>
+            <div>
+                <strong>Players:</strong> <div>{{numberOfTeams}} / {{tournament.maxTeams}}</div>
+            </div>
+        </div>
+    </div>
+</div>

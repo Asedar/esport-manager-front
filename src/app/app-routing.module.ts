@@ -1,6 +1,7 @@
-import { LandingPageComponent } from './main/landing-page/landing-page.component';
+import { LandingPageComponent } from './modules/starting-page/components/landing-page/landing-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LoggedGuard } from './guards/logged.guard';
 
 
 const routes: Routes = [
@@ -9,7 +10,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  {path: 'home', component: LandingPageComponent}
+  {
+    path: 'home', component: LandingPageComponent,
+    canActivate: [LoggedGuard]
+  }
 ];
 
 @NgModule({
